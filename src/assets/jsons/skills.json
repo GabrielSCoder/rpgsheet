@@ -1,0 +1,738 @@
+[
+  {
+    "nome": "abençoar",
+    "id": 1
+  },
+  {
+    "nome": "afastar animais",
+    "id": 2
+  },
+  {
+    "nome": "afastar mortos-vivos",
+    "id": 3
+  },
+  {
+    "nome": "afastar plantas",
+    "id": 4
+  },
+  {
+    "nome": "agarrar",
+    "id": 5
+  },
+  {
+    "nome": "água benta",
+    "id": 6
+  },
+  {
+    "nome": "ambidestria",
+    "id": 7
+  },
+  {
+    "nome": "aparência exótica",
+    "id": 8
+  },
+  {
+    "nome": "aptidão mágica",
+    "id": 9
+  },
+  {
+    "nome": "aptidão psiônica",
+    "id": 10
+  },
+  {
+    "nome": "amizade com animais",
+    "id": 11
+  },
+  {
+    "nome": "área de influência musical",
+    "id": 12
+  },
+  {
+    "nome": "animal que fala",
+    "id": 13
+  },
+  {
+    "nome": "arma de fogo",
+    "id": 14
+  },
+  {
+    "nome": "arma favorita",
+    "id": 15
+  },
+  {
+    "nome": "armadura blindada",
+    "id": 16
+  },
+  {
+    "nome": "ataque coordenado",
+    "id": 17
+  },
+  {
+    "nome": "ataque de musou",
+    "id": 18
+  },
+  {
+    "nome": "ataque em movimento",
+    "id": 19
+  },
+  {
+    "nome": "ataque furtivo",
+    "id": 20
+  },
+  {
+    "nome": "ataque incorpóreo",
+    "id": 21
+  },
+  {
+    "nome": "ataque múltiplos",
+    "id": 22
+  },
+  {
+    "nome": "ateu",
+    "id": 23
+  },
+  {
+    "nome": "avaliar objeto mágico",
+    "id": 24
+  },
+  {
+    "nome": "balão",
+    "id": 25
+  },
+  {
+    "nome": "barco",
+    "id": 26
+  },
+  {
+    "nome": "barulho do trovão",
+    "id": 27
+  },
+  {
+    "nome": "berserker",
+    "id": 28
+  },
+  {
+    "nome": "biblioteca",
+    "id": 29
+  },
+  {
+    "nome": "bioluminescência",
+    "id": 30
+  },
+  {
+    "nome": "braço mecânico",
+    "id": 31
+  },
+  {
+    "nome": "braços modulares",
+    "id": 32
+  },
+  {
+    "nome": "bravura",
+    "id": 33
+  },
+  {
+    "nome": "burro de cargar",
+    "id": 34
+  },
+  {
+    "nome": "camisa de ferro",
+    "id": 35
+  },
+  {
+    "nome": "canalizador",
+    "id": 36
+  },
+  {
+    "nome": "carga",
+    "id": 37
+  },
+  {
+    "nome": "cascos",
+    "id": 38
+  },
+  {
+    "nome": "coice",
+    "id": 39
+  },
+  {
+    "nome": "combate montado",
+    "id": 40
+  },
+  {
+    "nome": "cauda",
+    "id": 41
+  },
+  {
+    "nome": "chifres",
+    "id": 42
+  },
+  {
+    "nome": "conexeão afetiva",
+    "id": 43
+  },
+  {
+    "nome": "conjurar elementais",
+    "id": 44
+  },
+  {
+    "nome": "conjurar servos astrais",
+    "id": 45
+  },
+  {
+    "nome": "controlar animais",
+    "id": 46
+  },
+  {
+    "nome": "contatos",
+    "id": 47
+  },
+  {
+    "nome": "controlar mortos-vivos",
+    "id": 48
+  },
+  {
+    "nome": "contorcionismo",
+    "id": 49
+  },
+  {
+    "nome": "controlar plantas",
+    "id": 50
+  },
+  {
+    "nome": "conversão de energia mágica",
+    "id": 51
+  },
+  {
+    "nome": "conversar com animais",
+    "id": 52
+  },
+  {
+    "nome": "conservar com plantas",
+    "id": 53
+  },
+  {
+    "nome": "corpo de água",
+    "id": 54
+  },
+  {
+    "nome": "correr nas paredes",
+    "id": 55
+  },
+  {
+    "nome": "cura pelas mãos",
+    "id": 56
+  },
+  {
+    "nome": "dança das capas",
+    "id": 57
+  },
+  {
+    "nome": "dano desarmado",
+    "id": 58
+  },
+  {
+    "nome": "desarme",
+    "id": 59
+  },
+  {
+    "nome": "destilar poções",
+    "id": 60
+  },
+  {
+    "nome": "detectar magias",
+    "id": 61
+  },
+  {
+    "nome": "disparar múltiplas flechas",
+    "id": 62
+  },
+  {
+    "nome": "dom em atributo",
+    "id": 63
+  },
+  {
+    "nome": "dom em habilidade",
+    "id": 64
+  },
+  {
+    "nome": "enfeitiçar pessoas",
+    "id": 65
+  },
+  {
+    "nome": "engenhoqueiro",
+    "id": 66
+  },
+  {
+    "nome": "dom em habilidade",
+    "id": 67
+  },
+  {
+    "nome": "dom em perícia",
+    "id": 68
+  },
+  {
+    "nome": "duro na queda",
+    "id": 69
+  },
+  {
+    "nome": "enxergar espíritos",
+    "id": 70
+  },
+  {
+    "nome": "enxergar invisível",
+    "id": 71
+  },
+  {
+    "nome": "enxergar no escuro",
+    "id": 72
+  },
+  {
+    "nome": "escalada sobrenatural",
+    "id": 73
+  },
+  {
+    "nome": "escolhido pelo divino",
+    "id": 74
+  },
+  {
+    "nome": "especialista em arremesso de pedras",
+    "id": 75
+  },
+  {
+    "nome": "especialista em línguas",
+    "id": 76
+  },
+  {
+    "nome": "esquiva sobrenatural",
+    "id": 77
+  },
+  {
+    "nome": "exorcismo",
+    "id": 78
+  },
+  {
+    "nome": "ferramentas mágicas",
+    "id": 79
+  },
+  {
+    "nome": "familiar",
+    "id": 80
+  },
+  {
+    "nome": "faz-tudo",
+    "id": 81
+  },
+  {
+    "nome": "ferir mortos-vivos",
+    "id": 82
+  },
+  {
+    "nome": "ferrão",
+    "id": 83
+  },
+  {
+    "nome": "flecha incendiária",
+    "id": 84
+  },
+  {
+    "nome": "flechada certeira",
+    "id": 85
+  },
+  {
+    "nome": "forma racial",
+    "id": 86
+  },
+  {
+    "nome": "força",
+    "id": 87
+  },
+  {
+    "nome": "força (lado negro)",
+    "id": 88
+  },
+  {
+    "nome": "fúria bárbara",
+    "id": 89
+  },
+  {
+    "nome": "garrar",
+    "id": 90
+  },
+  {
+    "nome": "gen",
+    "id": 91
+  },
+  {
+    "nome": "golpe sangrento",
+    "id": 92
+  },
+  {
+    "nome": "grande conjurador",
+    "id": 93
+  },
+  {
+    "nome": "guarda-costas",
+    "id": 94
+  },
+  {
+    "nome": "guardião de um artefato importante",
+    "id": 95
+  },
+  {
+    "nome": "grimório tatuado",
+    "id": 96
+  },
+  {
+    "nome": "habilidade com cordas",
+    "id": 97
+  },
+  {
+    "nome": "homunculo",
+    "id": 98
+  },
+  {
+    "nome": "ilusionismo",
+    "id": 99
+  },
+  {
+    "nome": "ignorar componente material",
+    "id": 100
+  },
+  {
+    "nome": "ignorar componente somático",
+    "id": 101
+  },
+  {
+    "nome": "ignorar componente verbal",
+    "id": 102
+  },
+  {
+    "nome": "imunidade de construto",
+    "id": 103
+  },
+  {
+    "nome": "imunidade de mortos-vivos",
+    "id": 104
+  },
+  {
+    "nome": "iniciativa coordenada",
+    "id": 105
+  },
+  {
+    "nome": "inimigo predileto",
+    "id": 106
+  },
+  {
+    "nome": "kiai",
+    "id": 107
+  },
+  {
+    "nome": "lâmina psiônica",
+    "id": 108
+  },
+  {
+    "nome": "lâmina psiônica de arremesso",
+    "id": 109
+  },
+  {
+    "nome": "leitura das mãos",
+    "id": 110
+  },
+  {
+    "nome": "levitação",
+    "id": 111
+  },
+  {
+    "nome": "ligação com as águas",
+    "id": 112
+  },
+  {
+    "nome": "ligação com pedras",
+    "id": 113
+  },
+  {
+    "nome": "ligação divina",
+    "id": 114
+  },
+  {
+    "nome": "localizar oásis",
+    "id": 115
+  },
+  {
+    "nome": "maestria",
+    "id": 116
+  },
+  {
+    "nome": "magias não-letais",
+    "id": 117
+  },
+  {
+    "nome": "manobras de defesa",
+    "id": 118
+  },
+  {
+    "nome": "máscara da aura",
+    "id": 119
+  },
+  {
+    "nome": "máscara da aura",
+    "id": 120
+  },
+  {
+    "nome": "mal cheiro",
+    "id": 121
+  },
+  {
+    "nome": "memória fotográfica",
+    "id": 122
+  },
+  {
+    "nome": "mente hostil",
+    "id": 123
+  },
+  {
+    "nome": "mente resistente",
+    "id": 124
+  },
+  {
+    "nome": "mestre das armas",
+    "id": 125
+  },
+  {
+    "nome": "mordida",
+    "id": 126
+  },
+  {
+    "nome": "movimento rápido",
+    "id": 127
+  },
+  {
+    "nome": "múltiplos braços",
+    "id": 128
+  },
+  {
+    "nome": "música antipsiônica",
+    "id": 129
+  },
+  {
+    "nome": "musica da amizade",
+    "id": 130
+  },
+  {
+    "nome": "música das serpentes",
+    "id": 131
+  },
+  {
+    "nome": "música de controle de pragas",
+    "id": 132
+  },
+  {
+    "nome": "música inspiradora de moral",
+    "id": 133
+  },
+  {
+    "nome": "música inspiradora de perícias",
+    "id": 134
+  },
+  {
+    "nome": "música pertubadora",
+    "id": 135
+  },
+  {
+    "nome": "npc: anjo da guarda",
+    "id": 136
+  },
+  {
+    "nome": "npc: guarda costas",
+    "id": 137
+  },
+  {
+    "nome": "npc: patrono",
+    "id": 138
+  },
+  {
+    "nome": "npc: tutor",
+    "id": 139
+  },
+  {
+    "nome": "ofuda",
+    "id": 140
+  },
+  {
+    "nome": "oráculos",
+    "id": 141
+  },
+  {
+    "nome": "pele resistente",
+    "id": 142
+  },
+  {
+    "nome": "perícia adicional",
+    "id": 143
+  },
+  {
+    "nome": "ponto de vida",
+    "id": 144
+  },
+  {
+    "nome": "precavido",
+    "id": 145
+  },
+  {
+    "nome": "palma de ferro",
+    "id": 146
+  },
+  {
+    "nome": "perícia em arremessos",
+    "id": 147
+  },
+  {
+    "nome": "proficiência arkana",
+    "id": 148
+  },
+  {
+    "nome": "proficiência em armaduras",
+    "id": 149
+  },
+  {
+    "nome": "proficiência psiônica",
+    "id": 150
+  },
+  {
+    "nome": "proficiência ritualítisca arkana",
+    "id": 151
+  },
+  {
+    "nome": "radar",
+    "id": 152
+  },
+  {
+    "nome": "rapidez na iniciativa",
+    "id": 153
+  },
+  {
+    "nome": "resistência à bebida",
+    "id": 154
+  },
+  {
+    "nome": "resistência À doenças",
+    "id": 155
+  },
+  {
+    "nome": "resistência a ilusões",
+    "id": 156
+  },
+  {
+    "nome": "resistência elemntal",
+    "id": 157
+  },
+  {
+    "nome": "respirar debaixo d'água",
+    "id": 158
+  },
+  {
+    "nome": "ricochete",
+    "id": 159
+  },
+  {
+    "nome": "salto",
+    "id": 160
+  },
+  {
+    "nome": "saque rápido",
+    "id": 161
+  },
+  {
+    "nome": "sentir armadilhas",
+    "id": 162
+  },
+  {
+    "nome": "sentar",
+    "id": 163
+  },
+  {
+    "nome": "sangue azul",
+    "id": 164
+  },
+  {
+    "nome": "sonar",
+    "id": 165
+  },
+  {
+    "nome": "sonhos proféticos",
+    "id": 166
+  },
+  {
+    "nome": "sono dos justos",
+    "id": 167
+  },
+  {
+    "nome": "sono restaurador",
+    "id": 168
+  },
+  {
+    "nome": "sorte miraculosa",
+    "id": 169
+  },
+  {
+    "nome": "talento arkano",
+    "id": 170
+  },
+  {
+    "nome": "talento divino",
+    "id": 171
+  },
+  {
+    "nome": "talento psiônica",
+    "id": 172
+  },
+  {
+    "nome": "tamanho [especial]",
+    "id": 173
+  },
+  {
+    "nome": "tamanho gigante",
+    "id": 174
+  },
+  {
+    "nome": "tapete voador",
+    "id": 175
+  },
+  {
+    "nome": "tatuagem psíquica",
+    "id": 176
+  },
+  {
+    "nome": "terceiro olho",
+    "id": 177
+  },
+  {
+    "nome": "transformar em animais",
+    "id": 178
+  },
+  {
+    "nome": "transformar em criatura marinha",
+    "id": 179
+  },
+  {
+    "nome": "trespassar",
+    "id": 180
+  },
+  {
+    "nome": "venefício",
+    "id": 181
+  },
+  {
+    "nome": "ventríloquismo",
+    "id": 182
+  },
+  {
+    "nome": "voô",
+    "id": 183
+  },
+  {
+    "nome": "voz poderosa",
+    "id": 184
+  }
+]

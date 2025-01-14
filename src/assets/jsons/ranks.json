@@ -1,0 +1,122 @@
+[
+  {
+    "nome": "lamentável",
+    "id": 1,
+    "valor": -3
+  },
+  {
+    "nome": "patético",
+    "id": 2,
+    "valor": -2
+  },
+  {
+    "nome": "muito fraco",
+    "id": 3,
+    "valor": -1
+  },
+  {
+    "nome": "fraco",
+    "id": 4,
+    "valor": 0
+  },
+  {
+    "nome": "normal",
+    "id": 5,
+    "valor": 1
+  },
+  {
+    "nome": "bom",
+    "id": 6,
+    "valor": 2
+  },
+  {
+    "nome": "ótimo",
+    "id": 7,
+    "valor": 3
+  },
+  {
+    "nome": "incrível",
+    "id": 8,
+    "valor": 4
+  },
+  {
+    "nome": "superior",
+    "id": 9,
+    "valor": 5
+  },
+  {
+    "nome": "heróico",
+    "id": 10,
+    "valor": 6
+  },
+  {
+    "nome": "lendário",
+    "id": 11,
+    "valor": 7
+  },
+  {
+    "nome": "espetacular",
+    "id": 12,
+    "valor": 8
+  },
+  {
+    "nome": "formidável",
+    "id": 13,
+    "valor": 9
+  },
+  {
+    "nome": "fenomenal",
+    "id": 14,
+    "valor": 10
+  },
+  {
+    "nome": "brilhante",
+    "id": 15,
+    "valor": 11
+  },
+  {
+    "nome": "magnífico",
+    "id": 16,
+    "valor": 12
+  },
+  {
+    "nome": "fantástico",
+    "id": 17,
+    "valor": 13
+  },
+  {
+    "nome": "mítico",
+    "id": 18,
+    "valor": 14
+  },
+  {
+    "nome": "utópico",
+    "id": 19,
+    "valor": 15
+  },
+  {
+    "nome": "épico",
+    "id": 20,
+    "valor": 16
+  },
+  {
+    "nome": "supremo",
+    "id": 21,
+    "valor": 17
+  },
+  {
+    "nome": "titânico",
+    "id": 22,
+    "valor": 18
+  },
+  {
+    "nome": "semi-divino",
+    "id": 23,
+    "valor": 19
+  },
+  {
+    "nome": "divino",
+    "id": 24,
+    "valor": 20
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "nome": "Acrobacias",
+    "id": 1
+  },
+  {
+    "nome": "alquimia",
+    "id": 2
+  },
+  {
+    "nome": "armas",
+    "id": 3
+  },
+  {
+    "nome": "animais",
+    "id": 4
+  },
+  {
+    "nome": "armadilhas",
+    "id": 5
+  },
+  {
+    "nome": "artíficie",
+    "id": 6
+  },
+  {
+    "nome": "avaliar",
+    "id": 7
+  },
+  {
+    "nome": "artes",
+    "id": 8
+  },
+  {
+    "nome": "conhecimento",
+    "id": 9
+  },
+  {
+    "nome": "cura/primeiros socorros",
+    "id": 10
+  },
+  {
+    "nome": "decifrar",
+    "id": 11
+  },
+  {
+    "nome": "escalar",
+    "id": 12
+  },
+  {
+    "nome": "escudo",
+    "id": 13
+  },
+  {
+    "nome": "esquiva",
+    "id": 14
+  },
+  {
+    "nome": "falsificação",
+    "id": 15
+  },
+  {
+    "nome": "fechaduras",
+    "id": 16
+  },
+  {
+    "nome": "furtar",
+    "id": 17
+  },
+  {
+    "nome": "furtividades",
+    "id": 18
+  },
+  {
+    "nome": "idiomas",
+    "id": 19
+  },
+  {
+    "nome": "manipulação",
+    "id": 20
+  },
+  {
+    "nome": "meditação",
+    "id": 21
+  },
+  {
+    "nome": "montaria",
+    "id": 22
+  },
+  {
+    "nome": "natação",
+    "id": 23
+  },
+  {
+    "nome": "música",
+    "id": 24
+  },
+  {
+    "nome": "navegação",
+    "id": 25
+  },
+  {
+    "nome": "profissão",
+    "id": 26
+  },
+  {
+    "nome": "rastreio",
+    "id": 27
+  },
+  {
+    "nome": "sobrevicência",
+    "id": 28
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "nome": "Humano",
+    "id": 1,
+    "modificadores" : [0, 0, 0 , 0, 0, 0, 0, 0],
+    "bonus_atributo" : 3
+  },
+  {
+    "nome": "Elfo",
+    "id": 2,
+    "modificadores" : [-1, 0, 1 , 0, 0, 0, 0, 0]
+  },
+  {
+    "nome": "Anão",
+    "id": 3,
+    "modificadores" : [0, 1, 0 , -1, 0, 0, 0, 0]
+  },
+  {
+    "nome": "Elfo Dourado",
+    "id": 4,
+    "modificadores" : [-1, -1, 1 , 1, 1, 0, 0, 0]
+  },
+  {
+    "nome": "Elfo Negro",
+    "id": 5,
+    "modificadores" : [-1, -1, 1 , 1, 0, 0, 0, 0]
+  },
+  {
+    "nome": "Halfling",
+    "id": 6,
+    "modificadores" : [-1, 1, 0 , 1, 0, 1, 0, 0]
+  },
+  {
+    "nome": "Meio-Orc",
+    "id": 7,
+    "modificadores" : [1, 1, 0 , 0, -1, 0, 0, 0]
+  },
+  {
+    "nome": "Meio-Elfo",
+    "id": 8,
+    "modificadores" : [0, -1, 1 , 0, 0, 0, 0, 0]
+  },
+  {
+    "nome": "Gnomo",
+    "id": 9,
+    "modificadores" : [-1, 0, 0 , 0, 1, 0, 0, 0]
+  },
+  {
+    "nome": "Autômato",
+    "id": 10,
+    "modificadores" : [-1, 0, 1 , 0, 0, 0, 0, 0]
+  }
+]

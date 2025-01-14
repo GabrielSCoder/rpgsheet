@@ -1,0 +1,62 @@
+[
+  {
+    "nome": "caminhar",
+    "id": 1
+  },
+  {
+    "nome": "desidatração",
+    "id": 2
+  },
+  {
+    "nome": "estigma social",
+    "id": 3
+  },
+  {
+    "nome": "ferro frio",
+    "id": 4
+  },
+  {
+    "nome": "inaptidão para magia arkana",
+    "id": 5
+  },
+  {
+    "nome": "inaptidão para magia divina",
+    "id": 6
+  },
+  {
+    "nome": "inaptidão para psiônicos",
+    "id": 7
+  },
+  {
+    "nome": "incapacidade de saltar",
+    "id": 8
+  },
+  {
+    "nome": "modelo especial",
+    "id": 9
+  },
+  {
+    "nome": "necessidade de sangue",
+    "id": 10
+  },
+  {
+    "nome": "vunerabilidade a ataques contra mortos-vivos",
+    "id": 11
+  },
+  {
+    "nome": "vunerabilidade a exorcismo",
+    "id": 12
+  },
+  {
+    "nome": "vunerabilidade a luz do sol",
+    "id": 13
+  },
+  {
+    "nome": "vunerabilidade a música",
+    "id": 14
+  },
+  {
+    "nome": "vunerabilidade ao fogo",
+    "id": 15
+  }
+]

@@ -1,0 +1,12 @@
+[
+  { "nome": "Guerreiro", "id": 1 },
+  { "nome": "Paladino", "id": 2 },
+  { "nome": "Clérigo", "id": 3 },
+  { "nome": "Ladino", "id": 4 },
+  { "nome": "Alquimista", "id": 5 },
+  { "nome": "Arqueiro", "id": 6 },
+  { "nome": "Patrulheiro", "id": 7 },
+  { "nome": "Bardo", "id": 8 },
+  { "nome": "Mago", "id": 9 },
+  { "nome": "Explorador", "id": 10 }
+]
