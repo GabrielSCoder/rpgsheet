@@ -72,7 +72,7 @@ export default function StyleSheet() {
 
    
     return (
-        <div className="flex flex-col h-full overflow-hidden">
+        <div className="flex flex-col h-full">
 
             <Button onClick={sub1} text="test" type="submitt" />
 
@@ -91,7 +91,7 @@ export default function StyleSheet() {
                 <input {...register("racaId")} hidden />
             </Card>
 
-            <Card className="bg-red-500 w-full justify-center h-full gap-5">
+            <Card className="bg-red-500 w-full justify-center gap-5">
 
                 <AtributosTemplate control={control} getValues={getValues} setValues={setValue} register={register} watch={watch} />
 

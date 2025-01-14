@@ -28,6 +28,8 @@ export default function ListaHabilidade({ control, register, watch, getValues, s
             return temp
         });
 
+        console.log(rows)
+
     }
 
     const addSkill = () => {
@@ -54,16 +56,15 @@ export default function ListaHabilidade({ control, register, watch, getValues, s
 
     const removeRow = (value) => {
 
-        console.log(value)
+
         let temp = rows
 
-        if (rows.length == 1) {
-            removeSkill()
-        } else {
-            for (let i = value; i <= rows.length; i++) {
-                temp[i] = temp[i + 1]
-            }
+
+        for (let i = value; i < rows.length; i++) {
+            // console.log("indo no ", i, i+1)
+            temp[i] = temp[i + 1]
         }
+
 
         temp.pop()
 
