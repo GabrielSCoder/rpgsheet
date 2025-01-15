@@ -3,20 +3,15 @@ import Card from "../../components/Card";
 import { Input } from "../../components/Inputs";
 import Table from "../../components/Table";
 import TitleTag from "../../components/TitleTags";
-import race from "../../assets/jsons/races.json"
+
 import classes from "../../assets/jsons/classes.json"
-import atributos from "../../assets/jsons/atributos.json"
-import racas from "../../assets/jsons/racas_modificadores.json"
+
 import races from "../../assets/jsons/races.json"
 import Button from "../../components/Button";
-import pp from "../../assets/jsons/pericias.json"
-import { useEffect, useState } from "react";
+
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/CustomSelect";
 import AtributosTemplate from "../Atributos";
-import habilidades from "../../assets/jsons/skills.json"
-import ranks from "../../assets/jsons/ranks.json"
-import GraduacaoSelect from "../selects/graduacaoSelect";
 import ListaHabilidade from "../ListaHabilidades";
 
 export default function StyleSheet() {

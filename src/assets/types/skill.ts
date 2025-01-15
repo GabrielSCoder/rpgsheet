@@ -1,4 +1,13 @@
 export type skill = {
-    id : number,
-    nome : string
+    nome: string,
+    id: number
+    value: number
+    graduacaoId : number
+}
+
+type skillStatic = {
+    nome: string,
+    id: number
+    value: number
+    graduacaoId : number
 }

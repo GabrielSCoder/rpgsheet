@@ -1,52 +1,70 @@
-import { register } from "module"
+
 import Button from "../../components/Button"
 import Card from "../../components/Card"
-import { Input } from "../../components/Inputs"
+
 import Table from "../../components/Table"
 import TitleTag from "../../components/TitleTags"
-import GraduacaoSelect from "../selects/graduacaoSelect"
-import { useState } from "react"
+
+import { useEffect, useState } from "react"
 import habilidades from "../../assets/jsons/skills.json"
 import ranks from "../../assets/jsons/ranks.json"
 import { skill } from "../../assets/types/skill"
 import classNames from "../../utils/classNames"
 
-export default function ListaHabilidade({ control, register, watch, getValues, setValues }) {
 
-    const [rows, setRows] = useState<skill[]>([]);
+export default function ListaHabilidade() {
 
     const [skills, setSkills] = useState(habilidades);
-    const [selectedSkills, setSelectedSkills] = useState()
+    const [rows, setRows] = useState<skill[]>([]);
+    const [selectedSkills, setSelectedSkills] = useState<[]>([])
 
-    const handleChangeSkill = (value: any) => {
+    const isSkillSelected = (id: number) => {
+        return selectedSkills.some((skill: skill) => skill.id === id);
+    };
+
+    const updateSelectedSkills = () => {
+        setSelectedSkills((prevSelected) => {
+
+            const validSkills = rows.filter((row) => row && row.id)
+            console.log(validSkills)
+            return validSkills;
+        });
+    };
+
+    const handleChangeSkill = (value: any, index: number) => {
 
         const selectedSkill = JSON.parse(value);
 
-        setRows((prevRows) => {
-            let temp = [...prevRows]
-            temp[temp.length - 1] = selectedSkill
-            return temp
-        });
+        setRows((prev) => {
+            let tmp = prev
+            tmp[index] = { ...rows[index], id: selectedSkill.id, nome: selectedSkill.nome }
+            return tmp
+        })
 
-        console.log(rows)
-
+        updateSelectedSkills();
     }
 
-    const addSkill = () => {
+    const handleChangeRank = (value: any, index: number) => {
 
-        setRows((prevRows) => {
-            let temp = [...prevRows]
-            temp.push({ id: 0, nome: "" })
-            return temp
-        });
+        setRows((prev) => {
+            let tmp = prev
+            tmp[index] = { ...rows[index], graduacaoId: parseInt(value, 10) }
+            return tmp
+        })
 
         console.log(rows)
+    }
+
+    const addRow = () => {
+        setRows((prevRows) => [
+            ...prevRows,
+            { value: Date.now(), id: 0, nome: "", graduacaoId: 4 },
+        ]);
     };
 
     const removeSkill = () => {
 
         setRows((prevRows) => {
-
             let temp = [...prevRows]
             temp.pop()
             return temp
@@ -54,42 +72,36 @@ export default function ListaHabilidade({ control, register, watch, getValues, s
 
     }
 
-    const removeRow = (value) => {
+    const removeRow = (index: number) => {
+        setRows((prevRows) => {
+            const updatedRows = prevRows.filter((_, i) => i !== index);
+            return updatedRows;
+        });
 
+    };
 
-        let temp = rows
+    const getJSON = () => {
 
+        const tmp = rows.map((key, index) => (
+            { id: key.id, nome : key.nome, graduacao : ranks[key.graduacaoId] }
+        ))
 
-        for (let i = value; i < rows.length; i++) {
-            // console.log("indo no ", i, i+1)
-            temp[i] = temp[i + 1]
-        }
-
-
-        temp.pop()
-
-        console.log(temp)
-
-    }
-    const downloadJSON = () => {
-
-        const formattedData = rows.map((nome, index) => ({
-            nome: nome,
-            id: index + 1,
-            // valor : -3 + index // IDs começam em 1
-        }));
-
-        const jsonString = JSON.stringify(formattedData, null, 2);
+        const jsonString = JSON.stringify(tmp, null, 2);
         const blob = new Blob([jsonString], { type: "application/json" });
         const url = URL.createObjectURL(blob);
 
         const a = document.createElement("a");
         a.href = url;
-        a.download = "test.json";
+        a.download = "test.json"; 
         a.click();
-        URL.revokeObjectURL(url);
+
+        URL.revokeObjectURL(url); 
     };
 
+    useEffect(() => {
+        console.log(rows)
+        updateSelectedSkills()
+    }, [rows.length])
 
     return (
         <Card className="flex-col gap-1 w-1/2">
@@ -106,21 +118,41 @@ export default function ListaHabilidade({ control, register, watch, getValues, s
                         </Table.Row>
                     </Table.Header>
                     <Table.Body className="overflow-y-auto">
-                        {rows.map((key, index) => (
-                            <Table.Row key={index}>
+                        {rows.map((row, index) => (
+                            <Table.Row key={row.value}>
                                 <Table.Column>
-                                    <select className={classNames('rounded-md p-2 w-full border-slate-300')} onChange={(e) => handleChangeSkill(e.target.value)}>
+                                    <select
+                                        className="rounded-md p-2 w-full border-slate-300"
+                                        onChange={(e) => handleChangeSkill(e.target.value, index)}
+                                    >
+                                        <option>Selecione</option>
+                                        {skills &&
+                                            skills.map((item) => (
+                                                <option
+                                                    key={item.id}
+                                                    className="text-black"
+                                                    value={JSON.stringify(item)}
+                                                    disabled={isSkillSelected(item.id) && rows[index]?.id !== item.id}
+                                                >
+                                                    {item.id} - {item.nome}
+                                                </option>
+                                            ))}
+                                    </select>
+                                </Table.Column>
+                                <Table.Column>
+                                    <select className={classNames('rounded-md p-2 w-full border-slate-300')} onChange={(e) => handleChangeRank(e.target.value, index)} defaultValue={4}>
                                         <option className="">Selecione</option>
-                                        {skills && skills.map((item: any) => (
-                                            <option key={item.id} className="text-black" value={JSON.stringify(item)}>{item.id} - {item.nome}</option>
+                                        {ranks && ranks.map((item: any) => (
+                                            <option key={item.id} value={item.id} className="text-black">{item.id} - {item.nome} ({item.valor})</option>
                                         ))}
                                     </select>
                                 </Table.Column>
                                 <Table.Column>
-                                    <GraduacaoSelect register={register} name={"rank " + index} className="p-2 w-fit overflow-y-auto" dados={ranks} key={index + 100} />
-                                </Table.Column>
-                                <Table.Column>
-                                    <Button type="delete" text="X" onClick={() => { removeRow(index) }} />
+                                    <Button
+                                        type="delete"
+                                        text="X"
+                                        onClick={() => removeRow(index)}
+                                    />
                                 </Table.Column>
                             </Table.Row>
                         ))}
@@ -129,8 +161,8 @@ export default function ListaHabilidade({ control, register, watch, getValues, s
             </div>
 
             <Card className="w-full">
-                <Button onClick={() => { addSkill() }} text="Adicionar" className="w-full mt-5 rounded-none" type="submitt" />
-                <Button onClick={() => { downloadJSON() }} text="Remover" className="w-full mt-5 bg-red-800 rounded-none" type="delete" disabled={rows.length <= 0} />
+                <Button onClick={() => { addRow() }} text="Adicionar" className="w-full mt-5 rounded-none" type="submitt" />
+                <Button onClick={() => { removeSkill() }} text="Remover" className="w-full mt-5 bg-red-800 rounded-none" type="delete" disabled={rows.length <= 0} />
             </Card>
 
         </Card>

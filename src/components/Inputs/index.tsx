@@ -52,6 +52,7 @@ export type selectInputOptions = {
     register?: UseFormRegister<any>;
     dados?: any;
     className?: string
+    change?: Function
 } & fieldInput
 
 export function FormDate(props: rootProps) {
