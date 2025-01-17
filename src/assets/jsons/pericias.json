@@ -1,114 +1,69 @@
 [
-  {
-    "nome": "Acrobacias",
-    "id": 1
-  },
-  {
-    "nome": "alquimia",
-    "id": 2
-  },
-  {
-    "nome": "armas",
-    "id": 3
-  },
-  {
-    "nome": "animais",
-    "id": 4
-  },
-  {
-    "nome": "armadilhas",
-    "id": 5
-  },
-  {
-    "nome": "artíficie",
-    "id": 6
-  },
-  {
-    "nome": "avaliar",
-    "id": 7
-  },
-  {
-    "nome": "artes",
-    "id": 8
-  },
-  {
-    "nome": "conhecimento",
-    "id": 9
-  },
-  {
-    "nome": "cura/primeiros socorros",
-    "id": 10
-  },
-  {
-    "nome": "decifrar",
-    "id": 11
-  },
-  {
-    "nome": "escalar",
-    "id": 12
-  },
-  {
-    "nome": "escudo",
-    "id": 13
-  },
-  {
-    "nome": "esquiva",
-    "id": 14
-  },
-  {
-    "nome": "falsificação",
-    "id": 15
-  },
-  {
-    "nome": "fechaduras",
-    "id": 16
-  },
-  {
-    "nome": "furtar",
-    "id": 17
-  },
-  {
-    "nome": "furtividades",
-    "id": 18
-  },
-  {
-    "nome": "idiomas",
-    "id": 19
-  },
-  {
-    "nome": "manipulação",
-    "id": 20
-  },
-  {
-    "nome": "meditação",
-    "id": 21
-  },
-  {
-    "nome": "montaria",
-    "id": 22
-  },
-  {
-    "nome": "natação",
-    "id": 23
-  },
-  {
-    "nome": "música",
-    "id": 24
-  },
-  {
-    "nome": "navegação",
-    "id": 25
-  },
-  {
-    "nome": "profissão",
-    "id": 26
-  },
-  {
-    "nome": "rastreio",
-    "id": 27
-  },
-  {
-    "nome": "sobrevicência",
-    "id": 28
-  }
+  { "nome": "acrobacia", "id": 1, "tipo": "comum" },
+  { "nome": "alquimia", "id": 2, "tipo": "comum" },
+  { "nome": "espada_pesada", "id": 3, "tipo": "armas" },
+  { "nome": "espada_leve", "id": 4, "tipo": "armas" },
+  { "nome": "adaga", "id": 5, "tipo": "armas" },
+  { "nome": "lanca", "id": 6, "tipo": "armas" },
+  { "nome": "machado", "id": 7, "tipo": "armas" },
+  { "nome": "martelo", "id": 8, "tipo": "armas" },
+  { "nome": "chicote", "id": 9, "tipo": "armas" },
+  { "nome": "arco_curto", "id": 10, "tipo": "armas" },
+  { "nome": "arco_composto", "id": 11, "tipo": "armas" },
+  { "nome": "arco_longo", "id": 12, "tipo": "armas" },
+  { "nome": "besta", "id": 13, "tipo": "armas" },
+  { "nome": "garra", "id": 14, "tipo": "armas" },
+  { "nome": "animal", "id": 15, "tipo": "comum" },
+  { "nome": "armadilha", "id": 16, "tipo": "comum" },
+  { "nome": "artífice", "id": 17, "tipo": "comum" },
+  { "nome": "avaliar", "id": 18, "tipo": "comum" },
+  { "nome": "arte_musical", "id": 19, "tipo": "comum" },
+  { "nome": "arte_pintura", "id": 20, "tipo": "comum" },
+  { "nome": "arte_escultura", "id": 21, "tipo": "comum" },
+  { "nome": "arte_joia", "id": 22, "tipo": "comum" },
+  { "nome": "arte_caligrafia", "id": 23, "tipo": "comum" },
+  { "nome": "conhecimento_geografia", "id": 24, "tipo": "comum" },
+  { "nome": "conhecimento_heraldica", "id": 25, "tipo": "comum" },
+  { "nome": "conhecimento_historia", "id": 26, "tipo": "comum" },
+  { "nome": "conhecimento_religiao", "id": 27, "tipo": "comum" },
+  { "nome": "conhecimento_arcano", "id": 28, "tipo": "comum" },
+  { "nome": "cura", "id": 29, "tipo": "comum" },
+  { "nome": "decifrar", "id": 30, "tipo": "comum" },
+  { "nome": "escalar", "id": 31, "tipo": "comum" },
+  { "nome": "escudo_pesado", "id": 32, "tipo": "protecao" },
+  { "nome": "escudo_leve", "id": 33, "tipo": "protecao" },
+  { "nome": "esquiva", "id": 34, "tipo": "comum" },
+  { "nome": "falsificação", "id": 35, "tipo": "comum" },
+  { "nome": "fechadura", "id": 36, "tipo": "comum" },
+  { "nome": "furtar", "id": 37, "tipo": "comum" },
+  { "nome": "furtividade", "id": 38, "tipo": "comum" },
+  { "nome": "idioma", "id": 39, "tipo": "comum" },
+  { "nome": "manipulação_disfarce", "id": 40, "tipo": "comum" },
+  { "nome": "manipulação_mentir", "id": 41, "tipo": "comum" },
+  { "nome": "manipulação_persuadir", "id": 42, "tipo": "comum" },
+  { "nome": "manipulação_intimidar", "id": 43, "tipo": "comum" },
+  { "nome": "meditação", "id": 44, "tipo": "comum" },
+  { "nome": "montaria", "id": 45, "tipo": "comum" },
+  { "nome": "natação", "id": 46, "tipo": "comum" },
+  { "nome": "música_corda", "id": 47, "tipo": "comum" },
+  { "nome": "música_sopro", "id": 48, "tipo": "comum" },
+  { "nome": "música_canto", "id": 49, "tipo": "comum" },
+  { "nome": "música_percussão", "id": 50, "tipo": "comum" },
+  { "nome": "navegação", "id": 51, "tipo": "comum" },
+  { "nome": "profissão_ferreiro", "id": 52, "tipo": "comum" },
+  { "nome": "profissão_carpinteiro", "id": 53, "tipo": "comum" },
+  { "nome": "profissão_alfaiate", "id": 54, "tipo": "comum" },
+  { "nome": "rastreio", "id": 55, "tipo": "comum" },
+  { "nome": "sobrevivência", "id": 56, "tipo": "comum" },
+  { "nome": "armadura_leve", "id": 57, "tipo": "protecao" },
+  { "nome": "armadura_media", "id": 58, "tipo": "protecao" },
+  { "nome": "armadura_pesada", "id": 59, "tipo": "protecao" },
+  { "nome": "engenharia", "id": 60, "tipo": "comum" },
+  { "nome": "herborismo", "id": 61, "tipo": "comum" },
+  { "nome": "veneno", "id": 62, "tipo": "comum" },
+  { "nome": "estrategia_tatica", "id": 63, "tipo": "comum" },
+  { "nome": "investigação", "id": 64, "tipo": "comum" },
+  { "nome": "arqueologia", "id": 65, "tipo": "comum" },
+  { "nome": "ladinagem", "id": 66, "tipo": "comum" },
+  { "nome": "exploração", "id": 67, "tipo": "comum" }
 ]

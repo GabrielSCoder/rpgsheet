@@ -27,6 +27,14 @@ export type fieldInput = {
     labelStyle?: string;
 }
 
+type textInput = {
+    value? : string
+} & fieldInput
+
+type numberInput = {
+    value ?: number
+} & fieldInput
+
 type rootProps = {
     children: ReactNode
     className?: string;
@@ -89,14 +97,14 @@ function Field() {
     return (<></>)
 }
 
-function TextInput(props: fieldInput) {
+function TextInput(props: textInput) {
 
-    const { name, onChange, disabled, maxLength, register, className, placeholder, label, labelStyle } = props
+    const { name, onChange, disabled, maxLength, register, className, placeholder, label, labelStyle, value } = props
 
     const Inputt = () => {
         return (
             <input type="text" name={name} onChange={e => onchange && onChange(e.target.value)} {...register && register(name)} disabled={disabled} maxLength={maxLength}
-                className={classNames(className, "bg-white rounded-md w-full border-slate-300 text-[15px]")} placeholder={placeholder} />
+                className={classNames(className, "bg-white rounded-md w-full border-slate-300 text-[15px]")} placeholder={placeholder} value={value ?? ""} />
         )
     }
 
@@ -197,7 +205,7 @@ function SelectOption(props: selectInputOptions) {
         return (
             <select {...register && register(name)} className={classNames('rounded-md p-2 w-full border-slate-300', className)}>
                 <option className="">Selecione</option>
-                {dados && dados.map((item : any) => (
+                {dados && dados.map((item: any) => (
                     <option key={item.id} className="text-black">{item.id} - {item.nome}</option>
                 ))}
             </select>
@@ -218,13 +226,15 @@ function SelectOption(props: selectInputOptions) {
     )
 }
 
-function OnlyNumber(props: fieldInput) {
+function OnlyNumber(props: numberInput) {
 
-    const { name, disabled, maxLength, register, placeholder, className, label, labelStyle } = props
+    const { name, disabled, maxLength, register, placeholder, className, label, labelStyle, value } = props
 
     const Numberr = () => {
         return (
-            <input type="number" name={name} {...register && register(name)} maxLength={maxLength} disabled={disabled} placeholder={placeholder} className={classNames("text-black rounded-md w-full border-slate-300", className)} />
+            <input type="number" name={name} {...register && register(name)} maxLength={maxLength} disabled={disabled}
+                placeholder={placeholder} value={value || 0}
+                className={classNames("text-black rounded-md w-full border-slate-300", className)} />
         )
     }
     return (
@@ -316,7 +326,7 @@ function SlctInput() {
 
                         <Select.Group>
                             <Select.Label></Select.Label>
-                            
+
                         </Select.Group>
 
                     </Select.Viewport>

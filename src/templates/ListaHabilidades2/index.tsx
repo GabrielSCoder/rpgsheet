@@ -19,13 +19,13 @@ type Props = {
     watch: any
 }
 
-export default function ListaHabilidade(props: Props) {
+export default function ListaHabilidade2(props: Props) {
 
     const [skills, setSkills] = useState(habilidades);
     const [rows, setRows] = useState<skill[]>([]);
     const [selectedSkills, setSelectedSkills] = useState<[]>([])
 
-    const [dSkills, setDSkills] = useState()
+    const [dSkills, setDSkills] = useState<[]>([])
     const [dRows, setDRows] = useState<skill[]>([])
 
     const { getValues, watch } = props
@@ -33,6 +33,10 @@ export default function ListaHabilidade(props: Props) {
     const isSkillSelected = (id: number) => {
         return selectedSkills.some((skill: skill) => skill.id === id);
     };
+
+    const isProtectedSkill = (rowId: number) => {
+        return dSkills.some((row) => row.id === rowId)
+    }
 
     const updateSelectedSkills = () => {
         setSelectedSkills((prevSelected) => {
@@ -45,87 +49,88 @@ export default function ListaHabilidade(props: Props) {
     const handleChangeRank = (value: any, index: number) => {
 
         setRows((prev) => {
-            let tmp = prev
-            tmp[index] = { ...rows[index], graduacaoId: parseInt(value, 10) }
+            const tmp = [...prev]
+            tmp[index] = { ...tmp[index], graduacaoId: parseInt(value, 10) }
             return tmp
         })
-
-        console.log(rows)
     }
 
-    const defaultRows = () => {
-        const defaultSkills = dSkills.map((key: skill) => {
-            const skill = getSkill(key.id); // Obtém a skill padrão
-            return {
-                value: Date.now() + Math.random(), // Um identificador único para a linha
-                id: skill.id, // ID da skill
-                nome: skill.nome, // Nome da skill
-                graduacaoId: 4, // Valor padrão para graduação
-            };
-        });
-    
-        setRows(defaultSkills); // Define as linhas diretamente
-    };
+    const protectedRows = () => {
 
-    const handleChangeSkill = (value: any, index: number) => {
-        const selectedSkill = JSON.parse(value);
-        console.log("handle", selectedSkill, index);
-    
-        setRows((prev) => {
-            const updatedRows = [...prev];
-            updatedRows[index] = { ...updatedRows[index], id: selectedSkill.id, nome: selectedSkill.nome };
+        const tmp = rows.filter((row) => {
+            return dSkills.some((i: any) => row.id === i.id)
+        })
+
+        return tmp
+    }
+
+    const removeProtectedSkills = () => {
+
+        let x = protectedRows()
+
+        setRows((prevRows) => {
+            const updatedRows = prevRows.filter((row) => {
+                return !x.some((rowx) => rowx.id === row.id)
+            })
+
             return updatedRows;
         });
-    
-        updateSelectedSkills();
+    }
+
+
+    const handleChangeSkill = (value: string, index: number) => {
+        const selectedId = parseInt(value, 10);
+        const selectedSkill = getSkill(selectedId);
+
+        if (selectedSkill) {
+            setRows((prev) => {
+                const updatedRows = [...prev]
+                updatedRows[index] = { ...updatedRows[index], id: selectedSkill.id, nome: selectedSkill.nome }
+                return updatedRows;
+            })
+
+            updateSelectedSkills();
+        }
     };
-    
-    
-    // const handleChangeSkill = (value: any, index: number) => {
-
-    //     const selectedSkill = JSON.parse(value);
-    //     console.log("handle", selectedSkill, index)
-
-    //     setRows((prev) => {
-    //         let tmp = prev
-    //         tmp[index] = { ...rows[index], id: selectedSkill.id, nome: selectedSkill.nome }
-    //         return tmp
-    //     })
-
-    //     updateSelectedSkills();
-    // }
 
 
-    // const defaultRows = () => {
+    const createDefaultRows = () => {
 
-    //     let temp : any
+        const defaultSkills = dSkills.map((key: skill) => {
+            const skill = getSkill(key.id)
+            return {
+                value: Date.now() + Math.random(),
+                id: skill.id,
+                nome: skill.nome,
+                graduacaoId: key.graduacaoId,
+            };
+        });
 
-    //     dSkills && dSkills.map((key: skill) => {
+        // setRows(defaultSkills);
+        return defaultSkills
+    };
 
-    //         temp = getSkill(key.id)
-    //         console.log("temp", temp)
+    const insertDefaultRows = () => {
 
-    //         setRows((prevRows) => [
-    //             ...prevRows,
-    //             { value: Date.now(), id : temp.id, nome : temp.nome, graduacaoId : 4},
-    //         ]);
+        const tmp = createDefaultRows()
 
-    //     })
-    // }
+        return setRows(tmp)
+    }
 
 
-    const getSkill = (opt: string | number) => {
+    const getSkill = (opt: string | number): any => {
         if (typeof opt === "number") {
             return habilidades.find((i) => i.id === opt)
         } else if (typeof opt === "string") {
             return habilidades.find((i) => i.nome === opt)
         }
+        return null;
     }
 
     const addRow = () => {
         setRows((prevRows) => [
             ...prevRows,
-            { value: Date.now(), id : 0, nome : "", graduacaoId : 4},
+            { value: Date.now(), id: 0, nome: "", graduacaoId: 4 },
         ]);
     };
 
@@ -136,7 +141,6 @@ export default function ListaHabilidade(props: Props) {
             temp.pop()
             return temp
         });
-
     }
 
     const removeRow = (index: number) => {
@@ -147,38 +151,65 @@ export default function ListaHabilidade(props: Props) {
 
     };
 
-    const getJSON = () => {
-
-        const tmp = rows.map((key, index) => (
-            { id: key.id, nome: key.nome, graduacao: ranks[key.graduacaoId] }
-        ))
-
-        const jsonString = JSON.stringify(tmp, null, 2);
-        const blob = new Blob([jsonString], { type: "application/json" });
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "test.json";
-        a.click();
-
-        URL.revokeObjectURL(url);
+    const getDskills = () => {
+        console.log("disparando getDskills...");
+        const racialSkills = race[getValues("racaId") - 1]?.habilidade_racial || []
+        setDSkills(racialSkills)
     };
 
-    useEffect(() => {
-        console.log("Linhas atuais :", rows)
-        updateSelectedSkills()
-    }, [rows.length])
+    const updateRowsOnRaceChange = () => {
+      
+        const nonDefaultRows = rows.filter(
+            (row) => !dSkills.some((defaultSkill: skill) => defaultSkill.id === row.id)
+        );
+    
+    
+        const defaultRows = createDefaultRows();
+    
+
+        const updatedRows = [...defaultRows, ...nonDefaultRows, ];
+    
+        
+        setRows(updatedRows);
+    };
+
+
+    // useEffect(() => {
+    //     updateSelectedSkills()
+    //     console.log("Linhas atuais :", rows)
+    // }, [rows])
+
+    // useEffect(() => {
+    //     console.log("Skills atuais ", dSkills)
+    // }, [dSkills])
+
+    // useEffect(() => {
+    //     getValues("racaId") && race[getValues("racaId") - 1].habilidade_racial ? getDskills() : ""
+    //     // dSkills && dSkills.length > 0 ? insertDefaultRows() : ""
+    //     console.log("Raça atual: ", race[getValues("racaId") - 1])
+    // }, [watch("racaId")])
 
     useEffect(() => {
-        console.log("Default : ", dSkills)
-        console.log("Default : ", dRows)
-    }, [dSkills, dRows])
-
+        // Atualiza as linhas assim que `dSkills` for alterado
+        if (dSkills && dSkills.length > 0) {
+            console.log("dSkills atualizado, atualizando linhas...");
+            updateRowsOnRaceChange();
+        }
+    }, [dSkills]);
+    
     useEffect(() => {
-        getValues("racaId") && race[getValues("racaId") - 1].habilidade_racial ? setDSkills(race[getValues("racaId") - 1].habilidade_racial) : ""
-        console.log("ttt: ", race[getValues("racaId") - 1])
-    }, [watch(getValues("racaId"))])
+        removeProtectedSkills()
+        const raceId = getValues("racaId");
+        if (raceId && race[raceId - 1]?.habilidade_racial) {
+            getDskills()
+            console.log("Raça atual: ", race[raceId - 1]);
+        }
+    }, [watch("racaId")])
+    
+    useEffect(() => {
+        updateSelectedSkills();
+        console.log("Linhas atuais:", rows)
+    }, [rows]);
 
     return (
         <Card className="flex-col gap-1 w-1/2">
@@ -201,24 +232,26 @@ export default function ListaHabilidade(props: Props) {
                                     <select
                                         className="rounded-md p-2 w-full border-slate-300"
                                         onChange={(e) => handleChangeSkill(e.target.value, index)}
-                                        value={JSON.stringify({ id: row.id, nome: row.nome })}
+                                        value={row.id || ""}
                                     >
-                                        <option>Selecione</option>
+                                        <option value="">Selecione</option>
                                         {skills &&
                                             skills.map((item) => (
                                                 <option
                                                     key={item.id}
                                                     className="text-black"
-                                                    value={JSON.stringify(item)}
+                                                    value={item.id}
                                                     disabled={isSkillSelected(item.id) && rows[index]?.id !== item.id}
                                                 >
                                                     {item.id} - {item.nome}
                                                 </option>
                                             ))}
                                     </select>
+
                                 </Table.Column>
                                 <Table.Column>
-                                    <select className={classNames('rounded-md p-2 w-full border-slate-300')} onChange={(e) => handleChangeRank(e.target.value, index)} defaultValue={4}>
+                                    <select className={classNames('rounded-md p-2 w-full border-slate-300')} onChange={(e) => handleChangeRank(e.target.value, index)}
+                                        value={row.graduacaoId || ""}>
                                         <option className="">Selecione</option>
                                         {ranks && ranks.map((item: any) => (
                                             <option key={item.id} value={item.id} className="text-black">{item.id} - {item.nome} ({item.valor})</option>
@@ -230,6 +263,7 @@ export default function ListaHabilidade(props: Props) {
                                         type="delete"
                                         text="X"
                                         onClick={() => removeRow(index)}
+                                        disabled={isProtectedSkill(row.id)}
                                     />
                                 </Table.Column>
                             </Table.Row>
@@ -240,7 +274,9 @@ export default function ListaHabilidade(props: Props) {
 
             <Card className="w-full">
                 <Button onClick={() => { addRow() }} text="Adicionar" className="w-full mt-5 rounded-none" type="submitt" />
-                <Button onClick={() => { defaultRows() }} text="Mod" className="w-full mt-5 rounded-none" type="submitt" />
+                {/* <Button onClick={() => { createDefaultRows() }} text="criar" className="w-full mt-5 rounded-none" type="submitt" /> */}
+                <Button onClick={() => { insertDefaultRows() }} text="add dfl" className="w-full mt-5 rounded-none" type="submitt" />
+                <Button onClick={() => { removeProtectedSkills() }} text="Del" className="w-full mt-5 rounded-none" type="delete" />
                 <Button onClick={() => { removeSkill() }} text="Remover" className="w-full mt-5 bg-red-800 rounded-none" type="delete" disabled={rows.length <= 0} />
             </Card>
 

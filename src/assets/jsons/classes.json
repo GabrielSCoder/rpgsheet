@@ -1,12 +1,12 @@
 [
-  { "nome": "Guerreiro", "id": 1 },
-  { "nome": "Paladino", "id": 2 },
-  { "nome": "Clérigo", "id": 3 },
-  { "nome": "Ladino", "id": 4 },
-  { "nome": "Alquimista", "id": 5 },
-  { "nome": "Arqueiro", "id": 6 },
-  { "nome": "Patrulheiro", "id": 7 },
-  { "nome": "Bardo", "id": 8 },
-  { "nome": "Mago", "id": 9 },
-  { "nome": "Explorador", "id": 10 }
+  { "nome": "Guerreiro", "id": 1, "pv_inicial": 12, "bonus_constituicao": 2 },
+  { "nome": "Paladino", "id": 2, "pv_inicial": 12, "bonus_constituicao": 2 },
+  { "nome": "Clérigo", "id": 3, "pv_inicial": 10, "bonus_constituicao": 2 },
+  { "nome": "Ladino", "id": 4, "pv_inicial": 8, "bonus_constituicao": 2 },
+  { "nome": "Alquimista", "id": 5, "pv_inicial": 8, "bonus_constituicao": 2 },
+  { "nome": "Arqueiro", "id": 6, "pv_inicial": 10, "bonus_constituicao": 2 },
+  { "nome": "Patrulheiro", "id": 7, "pv_inicial": 10, "bonus_constituicao": 2 },
+  { "nome": "Bardo", "id": 8, "pv_inicial": 8, "bonus_constituicao": 2 },
+  { "nome": "Mago", "id": 9, "pv_inicial": 8, "bonus_constituicao": 2 },
+  { "nome": "Explorador", "id": 10, "pv_inicial": 10, "bonus_constituicao": 2 }
 ]

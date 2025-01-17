@@ -56,18 +56,7 @@ export default function AtributosTemplate({control, register, watch, getValues, 
 
     };
 
-    const getColumns2 = () => {
-
-
-        return Array.from({ length: 6 }).map((_, l) => (
-            <Table.Row key={`row-${l}`}>
-                <Table.Column>{l + 1}º Círculo </Table.Column>
-                {Array.from({ length: 3 }).map((_, c) => (
-                    <Table.Column key={`col-${l}-${c}`}>Coluna {c}</Table.Column>
-                ))}
-            </Table.Row>
-        ));
-    };
+    
 
     const getFinalCalc = () => {
         let temp: number[] = []
@@ -97,7 +86,7 @@ export default function AtributosTemplate({control, register, watch, getValues, 
 
 
     useEffect(() => {
-        console.log(race[getValues("racaId") - 1])
+        // console.log(race[getValues("racaId") - 1])
         if (getValues("racaId") != null) {
             setRaceMod(race[getValues("racaId") - 1].modificadores)
             if (race[getValues("racaId") - 1].bonus_atributo) {

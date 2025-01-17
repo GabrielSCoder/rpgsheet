@@ -21,17 +21,28 @@ import ListaArmaduras from "../ListaArmaduras";
 import { RituaisTemplate } from "../RituaisTemplate";
 import { CaminhosMagia } from "../CaminhosTemplate";
 import { AtributosSecundarios } from "../AtributosSecundarios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ListaHabilidade2 from "../ListaHabilidades2";
+import { racaT } from "../../assets/types/raca";
+import { classe } from "../../assets/types/classes";
+import { periciaT } from "../../assets/types/pericia";
+import ListaPericias from "../ListaPericias";
 
 export default function StyleSheet() {
 
     const { register, handleSubmit, getValues, watch, setValue, control } = useForm({
         defaultValues: {
-            "racaId": null
+            "racaId": null,
+            "classeId" : null
         }
     })
 
-    const [attSec, setAttSec] = useState<atributos_secundariosT>()
+    const attrSee : atributos_secundariosT = {ataque : 0, atual_pts_magia : 0, atual_pts_vida : 0, defesa : 0, iniciativa : 0, pts_magia : 0, pts_vida : 0}
+
+    const [attSec, setAttSec] = useState<atributos_secundariosT>(attrSee)
+    const [raceData, setRaceData] = useState<racaT>()
+    const [classData, setClassData] = useState<classe>()
+    const [periciaData, setPericiaData] = useState<periciaT[]>([])
 
     const sexo = {
         dados: [{ "id": 1, "nome": "homem" }, { "id": 2, "nome": "mulher" }]
@@ -62,7 +73,12 @@ export default function StyleSheet() {
         URL.revokeObjectURL(url);
     };
 
-
+    const calSecAtt = () => {
+        const l : atributos_secundariosT = {
+            pts_vida : classData ? classData?.pv_inicial + 2 * classData?.bonus_constituicao : 0,
+            ataque : 0
+        }
+    }
 
     const sub1 = () => {
         handleSubmit(data => {
@@ -70,9 +86,13 @@ export default function StyleSheet() {
         })()
     }
 
-    const updateRacaId = (value: number) => {
-        setValue("racaId", value)
+    const updateOpt = (value: number, nome : any) => {
+        setValue(nome, value)
     }
+
+    useEffect(() => {
+        console.log(watch())
+    }, [watch()])
 
 
     return (
@@ -80,11 +100,13 @@ export default function StyleSheet() {
 
             <Button onClick={sub1} text="test" type="submitt" />
 
+            <AtributosSecundarios props={attrSee}/>
+
             <Card className="border rounded-md shadow-md grid grid-cols-4 gap-2 p-2">
                 <Input.Text name="nome" placeholder="Nome" className="border rounded-md col-span-2 p-2" />
                 <Input.Text name="jogador" placeholder="jogador" className="border rounded-md col-span-2 p-2" />
-                <CustomSelect dados={races} id="d" nome="raca_select" onChange={updateRacaId} valorSelecionado={getValues("racaId")} classeName="border rounded-md col-span-1 p-2" key={0} />
-                <Input.SelectOpt register={register} name="classe" placeholder="Classe" className="border rounded-md col-span-1 p-2" dados={classes} />
+                <CustomSelect dados={races} id="d" nome="racaId" onChange={updateOpt} valorSelecionado={getValues("racaId")} classeName="border rounded-md col-span-1 p-2" key={0} register={register}/>
+                <CustomSelect dados={classes} id="d" nome="classeId" onChange={updateOpt} valorSelecionado={getValues("classeId")} classeName="border rounded-md col-span-1 p-2" key={1} register={register}/>
                 <Input.SelectOpt register={register} name="sexo" placeholder="Sexo" className="border rounded-md col-span-1 p-2" dados={sexo.dados} />
                 <Input.Number name="deslocamento" placeholder="deslocamento" className="border rounded-md col-span-1 p-2" />
                 {/* <Input.SelectOpt name="regras" className="border rounded-md col-span-1 p-2" dados={regras.dados} /> */}
@@ -92,26 +114,28 @@ export default function StyleSheet() {
                 <Input.Text name="peso" placeholder="peso" className="border rounded-md col-span-1 p-2" />
                 <Input.Text name="divindades" placeholder="divindidades" className="border rounded-md col-span-1 p-2" />
                 <Input.Text name="plano_origem" placeholder="Plano de Origem" className="border rounded-md col-span-1 p-2" />
-                <input {...register("racaId")} hidden />
+
+                {/* <input {...register("racaId")} hidden />
+                <input {...register("classeId")} hidden /> */}
             </Card>
 
             <Card className="bg-red-500 w-full justify-center gap-5">
 
                 <AtributosTemplate control={control} getValues={getValues} setValues={setValue} register={register} watch={watch} />
 
-                <ListaHabilidade />
+                <ListaHabilidade2 getValues={getValues} watch={watch} />
 
             </Card>
 
             <Card className="bg-green-500 justify-center items-center gap-10">
 
-                <TableWithList title="pericia" columnTitle="nome" columnTitle2="graduação" primaryList={pericias} secundaryList={ranks} classeName="h-[300px]" />
+                <ListaPericias getValues={getValues} watch={watch}/>
 
                 <ListaArmas />
 
             </Card>
 
-            <AtributosSecundarios />
+          
 
           {/* <ListaArmaduras /> */}
 
