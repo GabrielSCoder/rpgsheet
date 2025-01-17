@@ -1,18 +1,27 @@
 import Card from "../../components/Card";
 
 import { Input } from "../../components/Inputs";
-import Table from "../../components/Table";
-import TitleTag from "../../components/TitleTags";
+
+import { atributos_secundariosT } from "../../assets/types/atributosSecundarios";
 
 import classes from "../../assets/jsons/classes.json"
 
 import races from "../../assets/jsons/races.json"
 import Button from "../../components/Button";
+import pericias from "../../assets/jsons/pericias.json"
+import ranks from "../../assets/jsons/ranks.json"
 
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/CustomSelect";
 import AtributosTemplate from "../Atributos";
 import ListaHabilidade from "../ListaHabilidades";
+import TableWithList from "../../components/TableWithList";
+import ListaArmas from "../ListaArmas";
+import ListaArmaduras from "../ListaArmaduras";
+import { RituaisTemplate } from "../RituaisTemplate";
+import { CaminhosMagia } from "../CaminhosTemplate";
+import { AtributosSecundarios } from "../AtributosSecundarios";
+import { useState } from "react";
 
 export default function StyleSheet() {
 
@@ -22,7 +31,7 @@ export default function StyleSheet() {
         }
     })
 
-    
+    const [attSec, setAttSec] = useState<atributos_secundariosT>()
 
     const sexo = {
         dados: [{ "id": 1, "nome": "homem" }, { "id": 2, "nome": "mulher" }]
@@ -65,9 +74,9 @@ export default function StyleSheet() {
         setValue("racaId", value)
     }
 
-   
+
     return (
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full bg-black">
 
             <Button onClick={sub1} text="test" type="submitt" />
 
@@ -90,165 +99,25 @@ export default function StyleSheet() {
 
                 <AtributosTemplate control={control} getValues={getValues} setValues={setValue} register={register} watch={watch} />
 
-                <ListaHabilidade control={control} getValues={getValues} register={register} setValues={setValue} watch={watch}/>
+                <ListaHabilidade />
 
             </Card>
 
             <Card className="bg-green-500 justify-center items-center gap-10">
-                <Card className="flex-col gap-1 ">
 
-                    <TitleTag.Sub className="text-center">Perícias</TitleTag.Sub>
+                <TableWithList title="pericia" columnTitle="nome" columnTitle2="graduação" primaryList={pericias} secundaryList={ranks} classeName="h-[300px]" />
 
-                    <Table className="table-auto w-full text-center align-middle ">
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.Head>Nome</Table.Head>
-                                <Table.Head>Graduação</Table.Head>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            <Table.Row>
-                                <Table.Column>Perícia 1</Table.Column>
-                                <Table.Column>Normal</Table.Column>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Column>Perícia 1</Table.Column>
-                                <Table.Column>Normal</Table.Column>
-                            </Table.Row>
-
-                        </Table.Body>
-                    </Table>
-                </Card>
-
-                <Card className="flex-col gap-1 ">
-
-                    <TitleTag.Sub className="text-center">Perícias com armas</TitleTag.Sub>
-
-                    <Table className="table-auto w-full text-center align-middle ">
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.Head>Nome</Table.Head>
-                                <Table.Head>Bônus</Table.Head>
-                                <Table.Head>Dano</Table.Head>
-                                <Table.Head>Alcance</Table.Head>
-                                <Table.Head>Tipo</Table.Head>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            <Table.Row>
-                                <Table.Column>Adaga</Table.Column>
-                                <Table.Column>+3</Table.Column>
-                                <Table.Column>2d6</Table.Column>
-                                <Table.Column>3</Table.Column>
-                                <Table.Column>P/C</Table.Column>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Column>Arco Composto</Table.Column>
-                                <Table.Column>+3</Table.Column>
-                                <Table.Column>2d6</Table.Column>
-                                <Table.Column>3</Table.Column>
-                                <Table.Column>P/C</Table.Column>
-                            </Table.Row>
-
-                        </Table.Body>
-                    </Table>
-                </Card>
+                <ListaArmas />
 
             </Card>
 
+            <AtributosSecundarios />
 
+          {/* <ListaArmaduras /> */}
 
+          {/* <CaminhosMagia /> */}
 
-
-
-            <Card className="flex-col gap-1 bg-indigo-500">
-
-                <TitleTag.Sub className="text-center">Perícias com armaduras e escudos</TitleTag.Sub>
-
-                <Table className="table-auto w-full text-center align-middle ">
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.Head>Nome</Table.Head>
-                            <Table.Head>IP-C</Table.Head>
-                            <Table.Head>IP-E</Table.Head>
-                            <Table.Head>IP-P</Table.Head>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        <Table.Row>
-                            <Table.Column>Cota de malhas</Table.Column>
-                            <Table.Column>2</Table.Column>
-                            <Table.Column>10</Table.Column>
-                            <Table.Column>2</Table.Column>
-
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Column>Cota de malhas</Table.Column>
-                            <Table.Column>2</Table.Column>
-                            <Table.Column>10</Table.Column>
-                            <Table.Column>2</Table.Column>
-
-                        </Table.Row>
-
-                    </Table.Body>
-                </Table>
-            </Card>
-
-            <Card className="bg-orange-500 justify-center">
-
-                <Card className="flex-col gap-1 w-1/2">
-                    <TitleTag.Sub className="text-center">Rituais</TitleTag.Sub>
-
-                    <Table className=" table-auto w-full text-center">
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.Head > </Table.Head>
-                                <Table.Head >Arkanos</Table.Head>
-                                <Table.Head >Divinos</Table.Head>
-                                <Table.Head >PSI</Table.Head>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            {/* {getColumns2()} */}
-                            <></>
-                        </Table.Body>
-                    </Table>
-                </Card>
-
-                <Card className="flex-col w-1/2 justify-center ">
-                    <TitleTag.Sub>Caminhos de Magia</TitleTag.Sub>
-
-                    <Card>
-                        <label>
-                            Ar
-
-                            <Input.Text name="caminho_ar" />
-                        </label>
-                        <label>
-                            Fogo
-                            <Input.Text name="caminho_fogo" />
-                        </label>
-                        <label>
-                            Água
-                            <Input.Text name="caminho_agua" />
-                        </label>
-                        <label>
-                            Terra
-                            <Input.Text name="caminho_terra" />
-                        </label>
-                        <label>
-                            Luz
-                            <Input.Text name="caminho_luz" />
-                        </label>
-                        <label>
-                            Trevas
-                            <Input.Text name="caminho_trevas" />
-                        </label>
-                    </Card>
-
-                </Card>
-
-            </Card>
+           {/* <RituaisTemplate /> */}
 
         </div>
     )

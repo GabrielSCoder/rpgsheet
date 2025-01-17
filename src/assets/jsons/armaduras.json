@@ -1,0 +1,93 @@
+[
+    {
+        "id": 1,
+        "nome": "Armadura de Couro",
+        "ip_c": 2,
+        "ip_p": 1,
+        "ip_i": 1
+    },
+    {
+        "id": 2,
+        "nome": "Armadura de Couro Reforçado",
+        "ip_c": 3,
+        "ip_p": 2,
+        "ip_i": 2
+    },
+    {
+        "id": 3,
+        "nome": "Cota de Malha",
+        "ip_c": 4,
+        "ip_p": 3,
+        "ip_i": 2
+    },
+    {
+        "id": 4,
+        "nome": "Armadura de Placas",
+        "ip_c": 6,
+        "ip_p": 5,
+        "ip_i": 4
+    },
+    {
+        "id": 5,
+        "nome": "Armadura Completa",
+        "ip_c": 8,
+        "ip_p": 7,
+        "ip_i": 6
+    },
+    {
+        "id": 6,
+        "nome": "Escudo Pequeno",
+        "ip_c": 1,
+        "ip_p": 1,
+        "ip_i": 2
+    },
+    {
+        "id": 7,
+        "nome": "Escudo Médio",
+        "ip_c": 2,
+        "ip_p": 2,
+        "ip_i": 3
+    },
+    {
+        "id": 8,
+        "nome": "Escudo Grande",
+        "ip_c": 3,
+        "ip_p": 3,
+        "ip_i": 4
+    },
+    {
+        "id": 9,
+        "nome": "Escudo Torre",
+        "ip_c": 4,
+        "ip_p": 4,
+        "ip_i": 5
+    },
+    {
+        "id": 10,
+        "nome": "Cota de Anéis",
+        "ip_c": 3,
+        "ip_p": 2,
+        "ip_i": 2
+    },
+    {
+        "id": 11,
+        "nome": "Gibão de Peles",
+        "ip_c": 1,
+        "ip_p": 1,
+        "ip_i": 1
+    },
+    {
+        "id": 12,
+        "nome": "Brunea",
+        "ip_c": 4,
+        "ip_p": 3,
+        "ip_i": 3
+    },
+    {
+        "id": 13,
+        "nome": "Armadura Laminar",
+        "ip_c": 5,
+        "ip_p": 4,
+        "ip_i": 3
+    }
+]

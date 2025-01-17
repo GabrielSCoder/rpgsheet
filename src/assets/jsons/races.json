@@ -3,51 +3,61 @@
     "nome": "Humano",
     "id": 1,
     "modificadores" : [0, 0, 0 , 0, 0, 0, 0, 0],
-    "bonus_atributo" : 3
+    "bonus_atributo" : 3,
+    "habilidade_racial" : 0
   },
   {
     "nome": "Elfo",
     "id": 2,
-    "modificadores" : [-1, 0, 1 , 0, 0, 0, 0, 0]
+    "modificadores" : [-1, 0, 1 , 0, 0, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 9, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Anão",
     "id": 3,
-    "modificadores" : [0, 1, 0 , -1, 0, 0, 0, 0]
+    "modificadores" : [0, 1, 0 , -1, 0, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Elfo Dourado",
     "id": 4,
-    "modificadores" : [-1, -1, 1 , 1, 1, 0, 0, 0]
+    "modificadores" : [-1, -1, 1 , 1, 1, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Elfo Negro",
     "id": 5,
-    "modificadores" : [-1, -1, 1 , 1, 0, 0, 0, 0]
+    "modificadores" : [-1, -1, 1 , 1, 0, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Halfling",
     "id": 6,
-    "modificadores" : [-1, 1, 0 , 1, 0, 1, 0, 0]
+    "modificadores" : [-1, 1, 0 , 1, 0, 1, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Meio-Orc",
     "id": 7,
-    "modificadores" : [1, 1, 0 , 0, -1, 0, 0, 0]
+    "modificadores" : [1, 1, 0 , 0, -1, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Meio-Elfo",
     "id": 8,
-    "modificadores" : [0, -1, 1 , 0, 0, 0, 0, 0]
+    "modificadores" : [0, -1, 1 , 0, 0, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Gnomo",
     "id": 9,
-    "modificadores" : [-1, 0, 0 , 0, 1, 0, 0, 0]
+    "modificadores" : [-1, 0, 0 , 0, 1, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   },
   {
     "nome": "Autômato",
     "id": 10,
-    "modificadores" : [-1, 0, 1 , 0, 0, 0, 0, 0]
+    "modificadores" : [-1, 0, 1 , 0, 0, 0, 0, 0],
+    "habilidade_racial" : [{"id" : 113, "grad" : 5}, {"id" : 79, "grad" : 5}]
   }
 ]
