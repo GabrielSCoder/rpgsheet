@@ -214,7 +214,7 @@ export default function ListaHabilidade2(props: Props) {
     }, [rows]);
 
     return (
-        <Card className="flex-col gap-1 w-1/2">
+        <Card className="flex-col gap-1 w-full">
 
             <TitleTag.Sub className="text-center">Habilidades</TitleTag.Sub>
 

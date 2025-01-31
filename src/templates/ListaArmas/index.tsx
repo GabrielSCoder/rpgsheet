@@ -6,20 +6,16 @@ import Table from "../../components/Table"
 import TitleTag from "../../components/TitleTags"
 
 import { useEffect, useState } from "react"
-import habilidades from "../../assets/jsons/skills.json"
 import ranks from "../../assets/jsons/ranks.json"
 import { skill } from "../../assets/types/skill"
-import classNames from "../../utils/classNames"
-import { racaT } from "../../assets/types/raca"
-import race from "../../assets/jsons/races.json"
-import classe from "../../assets/jsons/classes.json"
 import armas from "../../assets/jsons/armas.json"
 import { armasT } from "../../assets/types/armas"
 import pericias from "../../assets/jsons/pericias.json"
 
 type Props = {
     data: any
-    atributos : any
+    atributos: any
+    setInvArmasData: any
 }
 
 export default function ListaArmas(props: Props) {
@@ -30,15 +26,7 @@ export default function ListaArmas(props: Props) {
 
     const [dSkills, setDSkills] = useState<[]>([])
 
-    const { data, atributos } = props
-
-    const isSkillSelected = (id: number) => {
-        return selectedSkills.some((skill: skill) => skill.id === id);
-    };
-
-    const isProtectedSkill = (rowId: number) => {
-        return dSkills.some((row) => row.id === rowId)
-    }
+    const { data, atributos, setInvArmasData } = props
 
     const updateSelectedSkills = () => {
 
@@ -49,28 +37,14 @@ export default function ListaArmas(props: Props) {
         });
     };
 
-    const protectedRows = () => {
-
-        const tmp = rows.filter((row) => {
-            return dSkills.some((i: any) => row.id === i.id)
-        })
-
-        return tmp
-    }
-
-    const removeProtectedSkills = () => {
-
-        let x = protectedRows()
+    const removeSkill = () => {
 
         setRows((prevRows) => {
-            const updatedRows = prevRows.filter((row) => {
-                return !x.some((rowx) => rowx.id === row.id)
-            })
-
-            return updatedRows;
+            let temp = [...prevRows]
+            temp.pop()
+            return temp
         });
     }
-
 
     const handleChangeSkill = (value: string, index: number) => {
         const selectedId = parseInt(value, 10);
@@ -79,39 +53,16 @@ export default function ListaArmas(props: Props) {
         if (selectedSkill) {
             setRows((prev) => {
                 const updatedRows = [...prev]
-                updatedRows[index] = { ...updatedRows[index], id: selectedSkill.id, nome: selectedSkill.nome, dano : selectedSkill.dano, alcance : selectedSkill.alcance,
-                     tipo : selectedSkill.tipo, pericia : selectedSkill.pericia }
+                updatedRows[index] = {
+                    ...updatedRows[index], id: selectedSkill.id, nome: selectedSkill.nome, dano: selectedSkill.dano, alcance: selectedSkill.alcance,
+                    tipo: selectedSkill.tipo, pericia: selectedSkill.pericia
+                }
                 return updatedRows;
             })
 
             updateSelectedSkills();
         }
     };
-
-
-    const createDefaultRows = () => {
-
-        const defaultSkills = dSkills.map((key: skill) => {
-            const skill = getSkill(key.id)
-            return {
-                value: Date.now() + Math.random(),
-                id: skill.id,
-                nome: skill.nome,
-                graduacaoId: key.graduacaoId,
-            };
-        });
-
-        // setRows(defaultSkills);
-        return defaultSkills
-    };
-
-    const insertDefaultRows = () => {
-
-        const tmp = createDefaultRows()
-
-        return setRows(tmp)
-    }
-
 
     const getSkill = (opt: string | number): any => {
 
@@ -136,18 +87,9 @@ export default function ListaArmas(props: Props) {
     const addRow = () => {
         setRows((prevRows) => [
             ...prevRows,
-            { value: Date.now(), id: 0, nome: "", pericia : 0},
+            { value: Date.now(), id: 0, nome: "", pericia: 0, titulo: "" },
         ]);
     };
-
-    const removeSkill = () => {
-
-        setRows((prevRows) => {
-            let temp = [...prevRows]
-            temp.pop()
-            return temp
-        });
-    }
 
     const removeRow = (index: number) => {
 
@@ -158,28 +100,11 @@ export default function ListaArmas(props: Props) {
 
     };
 
-
-    const updateRowsOnRaceChange = () => {
-
-        const nonDefaultRows = rows.filter(
-            (row) => !dSkills.some((defaultSkill: skill) => defaultSkill.id === row.id)
-        );
-
-
-        const defaultRows = createDefaultRows();
-
-
-        const updatedRows = [...defaultRows, ...nonDefaultRows,];
-
-
-        setRows(updatedRows);
-    };
-
-    const bonusCalc = (row : any) => {
+    const bonusCalc = (row: any) => {
 
         const per = getPericia(row.pericia)
-        
-        if ( per && per.id && rows.length > 0 ) {
+
+        if (per && per.id && rows.length > 0) {
 
             const r = data.find((row: any) => row.id === per.id)
 
@@ -190,23 +115,38 @@ export default function ListaArmas(props: Props) {
             } else {
                 bonus = Math.ceil(atributos[2] / 2)
             }
-           
+
             return bonus
         }
 
         return 0
     }
 
+    const changeNameWeapon = (value: string, row: any) => {
+        setRows((prevRows) =>
+            prevRows.map((r) =>
+                r === row ? { ...r, titulo: value } : r
+            )
+        );
+    };
+
+    const updateData = () => {
+        
+        console.log("disparando")
+
+        const m = rows.map((row) => {
+            return {id : row.id, titulo : row.titulo, dano : row.dano, tipo : row.tipo, pericia : row.pericia, alcance : row.alcance }
+        })
+
+        setInvArmasData(m)
+    }
 
     useEffect(() => {
-        if (dSkills && dSkills.length > 0) {
-            updateRowsOnRaceChange();
-        }
-    }, [dSkills]);
-
+        updateData()
+    }, [rows])
 
     return (
-        <Card className="flex-col gap-1 w-1/2">
+        <Card className="flex-col gap-1 md:w-1/2 overflow-x-auto">
 
             <TitleTag.Sub className="text-center">Inventário Armas</TitleTag.Sub>
 
@@ -226,7 +166,7 @@ export default function ListaArmas(props: Props) {
                     <Table.Body className="overflow-y-auto">
                         {rows.map((row, index) => (
                             <Table.Row key={row.value}>
-                                <Table.Column><input type="text" className="p-2 border rounded-md" /></Table.Column>
+                                <Table.Column><input type="text" className="p-2 border rounded-md w-[100px]" onChange={(e) => changeNameWeapon(e.target.value, row)} value={row.titulo || ""} /></Table.Column>
                                 <Table.Column>
                                     <select
                                         className="rounded-md p-2 w-full border-slate-300"
@@ -240,7 +180,6 @@ export default function ListaArmas(props: Props) {
                                                     key={item.id}
                                                     className="text-black"
                                                     value={item.id}
-                                                    disabled={isSkillSelected(item.id) && rows[index]?.id !== item.id}
                                                 >
                                                     {item.id} - {item.nome}
                                                 </option>
@@ -258,7 +197,6 @@ export default function ListaArmas(props: Props) {
                                         type="delete"
                                         text="X"
                                         onClick={() => removeRow(index)}
-                                        disabled={isProtectedSkill(row.id)}
                                     />
                                 </Table.Column>
                             </Table.Row>
@@ -269,10 +207,7 @@ export default function ListaArmas(props: Props) {
 
             <Card className="w-full">
                 <Button onClick={() => { addRow() }} text="Adicionar" className="w-full mt-5 rounded-none" type="submitt" />
-                {/* <Button onClick={() => { createDefaultRows() }} text="criar" className="w-full mt-5 rounded-none" type="submitt" /> */}
-                <Button onClick={() => { insertDefaultRows() }} text="add dfl" className="w-full mt-5 rounded-none" type="submitt" />
-                <Button onClick={() => { removeProtectedSkills() }} text="Del" className="w-full mt-5 rounded-none" type="delete" />
-
+                <Button onClick={() => { removeSkill() }} text="Del" className="w-full mt-5 rounded-none" type="delete" />
             </Card>
 
         </Card>

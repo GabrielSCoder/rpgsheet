@@ -7,30 +7,31 @@ import TitleTag from "../../components/TitleTags";
 export function AtributosSecundarios({props} : {props : atributos_secundariosT}) {
 
     return (
-        <Card className="h-40 bg-blue-500 gap-2">
+        <Card className="h-40 bg-blue-500 gap-2 justify-center p-2">
+
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled  value={props.pts_vida}/>
-                <TitleTag.Sub>Pontos de vida</TitleTag.Sub>
+                <TitleTag.Sub className="text-xs md:text-base">Pontos de vida</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled  value={props.pts_vida}/>
-                <TitleTag.Sub>Pontos de vida máximo</TitleTag.Sub>
+                <TitleTag.Sub className="text-xs md:text-base">Pontos de vida máximo</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.pts_magia}/>
-                <TitleTag.Sub>Pontos de magia</TitleTag.Sub>
+                <TitleTag.Sub className="text-xs md:text-base">Pontos de magia</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.pts_magia}/>
-                <TitleTag.Sub>Pontos de magia máximo</TitleTag.Sub>
+                <TitleTag.Sub className="text-xs md:text-base">Pontos de magia máximo</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.defesa}/>
-                <TitleTag.Sub>Defesa</TitleTag.Sub>
+                <TitleTag.Sub className="text-xs md:text-base">Defesa</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.iniciativa} />
-                <TitleTag.Sub>Iniciativa</TitleTag.Sub>
+                <TitleTag.Sub className="text-xs md:text-base">Iniciativa</TitleTag.Sub>
             </Card>
         </Card>
     )

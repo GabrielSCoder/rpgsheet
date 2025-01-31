@@ -22,8 +22,8 @@ export default function ListaPericias(props: Props) {
     const [skills, setSkills] = useState<periciaT[]>([]);
     const [rows, setRows] = useState<periciaT[]>([]);
     const [selectedSkills, setSelectedSkills] = useState<[]>([])
-
     const [dSkills, setDSkills] = useState<[]>([])
+  
 
     const { getValues, watch, setData } = props
 
@@ -187,7 +187,6 @@ export default function ListaPericias(props: Props) {
     }
 
 
-
     useEffect(() => {
 
         setSkills(periciaFilter())
@@ -199,6 +198,7 @@ export default function ListaPericias(props: Props) {
         if (dSkills && dSkills.length > 0) {
             updateRowsOnRaceChange();
         }
+        
     }, [dSkills]);
     
     useEffect(() => {
@@ -215,7 +215,7 @@ export default function ListaPericias(props: Props) {
     }, [rows, dSkills])
 
     return (
-        <Card className="flex-col gap-1 w-1/2">
+        <Card className="flex-col gap-1 md:w-full lg:w-full">
 
             <TitleTag.Sub className="text-center">Perícias</TitleTag.Sub>
 

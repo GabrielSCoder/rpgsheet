@@ -8,4 +8,5 @@ export type armasT = {
     value: number,
     alcance : number,
     pericia : number
+    titulo ?: string
 }

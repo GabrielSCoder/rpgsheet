@@ -4,7 +4,7 @@ import StyleSheet from './templates/Stylesheet'
 function App() {
 
   return (
-    <div className='flex justify-center items-center min-h-screen w-screen bg-black'>
+    <div className='h-screen w-screen'>
       <StyleSheet />
     </div>
   )

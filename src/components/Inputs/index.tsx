@@ -104,7 +104,7 @@ function TextInput(props: textInput) {
     const Inputt = () => {
         return (
             <input type="text" name={name} onChange={e => onchange && onChange(e.target.value)} {...register && register(name)} disabled={disabled} maxLength={maxLength}
-                className={classNames(className, "bg-white rounded-md w-full border-slate-300 text-[15px]")} placeholder={placeholder} value={value ?? ""} />
+                className={classNames(className, "bg-white rounded-md w-full border-slate-300 text-[15px]")} placeholder={placeholder} />
         )
     }
 
@@ -233,7 +233,7 @@ function OnlyNumber(props: numberInput) {
     const Numberr = () => {
         return (
             <input type="number" name={name} {...register && register(name)} maxLength={maxLength} disabled={disabled}
-                placeholder={placeholder} value={value || 0}
+                placeholder={placeholder} value={value}
                 className={classNames("text-black rounded-md w-full border-slate-300", className)} />
         )
     }

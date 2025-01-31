@@ -5,12 +5,9 @@ import TitleTag from "../../components/TitleTags";
 import race from "../../assets/jsons/races.json"
 
 
-export default function AtributosTemplate({control, register, watch, getValues, setValues, atributos, setAtributos, calcFinal, setCalcFinal}) {
+export default function AtributosTemplate({ control, register, watch, getValues, setValues, atributos, setAtributos, calcFinal, setCalcFinal, raceMod, setRaceMod }) {
 
     const [attrPts, setAttrPts] = useState(10);
-
-
-    const [raceMod, setRaceMod] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
 
     const getColumns = () => {
@@ -30,7 +27,7 @@ export default function AtributosTemplate({control, register, watch, getValues, 
                                 onChange={(e) =>
                                     handleInputChange(key, parseInt(e.target.value, 10) || 0)
                                 }
-                                className="w-fit bg-transparent text-center"
+                                className="w-[50px] bg-transparent text-center"
                             />
                         </td>
                         <Table.Column >{raceMod[index]}</Table.Column>
@@ -44,7 +41,7 @@ export default function AtributosTemplate({control, register, watch, getValues, 
 
     };
 
-    
+
 
     const getFinalCalc = () => {
         let temp: number[] = []
@@ -80,7 +77,7 @@ export default function AtributosTemplate({control, register, watch, getValues, 
             if (race[getValues("racaId") - 1].bonus_atributo) {
                 setAttrPts(attrPts + race[getValues("racaId") - 1].bonus_atributo)
             } else {
-                attrPts >= 3 && attrPts < 10  ? setAttrPts(attrPts - 3) : resetarPontos()
+                attrPts >= 3 && attrPts < 10 ? setAttrPts(attrPts - 3) : resetarPontos()
             }
 
         } else setRaceMod([0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -92,24 +89,28 @@ export default function AtributosTemplate({control, register, watch, getValues, 
 
     const resetarPontos = () => {
         setAttrPts(10)
-    
+
         const novosAtributos = Object.keys(atributos).reduce((acc, key) => {
             acc[key as keyof typeof atributos] = 0
             return acc
         }, {} as typeof atributos)
-    
+
         setAtributos(novosAtributos)
     };
 
     return (
-        <Card className="flex-col gap-1 w-/12">
+        <Card className="flex-col gap-1 w-full lg:w-full">
 
             <TitleTag.Sub className="text-center">Atributos</TitleTag.Sub>
 
-            <input type="text" value={attrPts} className="text-start w-fit bg-transparent"/>
-            <input type="button" value="resetar" className="p-2 text-white bg-black" onClick={() => resetarPontos()}/>
+            <label className="text-center p-2">
+                Pontos restantes 
+                <input type="text" value={attrPts} className="ml-2 text-center w-[50px] bg-white border" />
+            </label>
 
-            <Table className=" table-auto w-full text-center">
+            <input type="button" value="resetar" className="p-2 text-white bg-black" onClick={() => resetarPontos()} />
+
+            <Table className=" table-auto w-full text-center bg-green-500">
                 <Table.Header>
                     <Table.Row>
                         <Table.Head > </Table.Head>

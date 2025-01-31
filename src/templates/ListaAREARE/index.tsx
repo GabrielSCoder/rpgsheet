@@ -12,7 +12,8 @@ import classe from "../../assets/jsons/classes.json"
 import { periciaT } from "../../assets/types/pericia"
 
 type Props = {
-    setData : any
+    periciaArmaData : any
+    setPericiaArmaData : any
 }
 
 export default function ListaAREARE(props : Props) {
@@ -22,9 +23,8 @@ export default function ListaAREARE(props : Props) {
     const [selectedSkills, setSelectedSkills] = useState<[]>([])
 
     const [dSkills, setDSkills] = useState<[]>([])
-    const [dRows, setDRows] = useState<skill[]>([])
 
-    const { setData } = props
+    const { periciaArmaData, setPericiaArmaData } = props
 
     const periciaFilter = () => {
         const tmp = pericia.filter((row) => {
@@ -110,7 +110,6 @@ export default function ListaAREARE(props : Props) {
             };
         });
 
-        // setRows(defaultSkills);
         return defaultSkills
     };
 
@@ -183,7 +182,7 @@ export default function ListaAREARE(props : Props) {
             return {id : value.id, nome : value.nome, graduacaoId : value.graduacaoId}
         })
 
-        setData(rr)
+        setPericiaArmaData([...rr])
     }
 
     useEffect(() => {
@@ -206,9 +205,9 @@ export default function ListaAREARE(props : Props) {
     }, [rows, dSkills]);
 
     return (
-        <Card className="flex-col gap-1 w-1/2">
+        <Card className="flex-col gap-1 md:w-full lg:w-full">
 
-            <TitleTag.Sub className="text-center">Perícias em armas/Armaduras/Escudos</TitleTag.Sub>
+            <TitleTag.Sub className="text-center xl:text-base">Perícias em armas/Armaduras/Escudos</TitleTag.Sub>
 
             <div className="bg-purple-500 flex justify-center items-start w-full h-[500px] overflow-y-auto">
                 <Table className="table-auto text-center align-middle w-full bg-yellow-500">

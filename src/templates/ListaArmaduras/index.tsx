@@ -1,22 +1,23 @@
-
 import Button from "../../components/Button"
 import Card from "../../components/Card"
-
 import Table from "../../components/Table"
 import TitleTag from "../../components/TitleTags"
 
 import { useEffect, useState } from "react"
-
 import { armadurasd } from "../../assets/types/armaduras"
-import classNames from "../../utils/classNames"
 import armaduras from "../../assets/jsons/armaduras.json"
 
+type Props = {
+    setInvArmadurasData : any
+}
 
-export default function ListaArmaduras() {
+export default function ListaArmaduras(props : Props) {
 
     const [skills, setSkills] = useState(armaduras);
     const [rows, setRows] = useState<armadurasd[]>([]);
     const [selectedSkills, setSelectedSkills] = useState<[]>([])
+
+    const { setInvArmadurasData } = props
 
     const isSkillSelected = (id: number) => {
         return selectedSkills.some((skill: armadurasd) => skill.id === id);
@@ -26,7 +27,6 @@ export default function ListaArmaduras() {
         setSelectedSkills((prevSelected) => {
 
             const validSkills = rows.filter((row) => row && row.id)
-            console.log(validSkills)
             return validSkills;
         });
     };
@@ -43,7 +43,6 @@ export default function ListaArmaduras() {
 
         updateSelectedSkills();
     }
-
 
     const addRow = () => {
         setRows((prevRows) => [
@@ -67,33 +66,22 @@ export default function ListaArmaduras() {
             const updatedRows = prevRows.filter((_, i) => i !== index);
             return updatedRows;
         });
-
     };
 
-    // const getJSON = () => {
+    const updateData = () => {
 
-    //     const tmp = rows.map((key, index) => (
-    //         { id: key.id, nome : key.nome, graduacao : ranks[key.graduacaoId] }
-    //     ))
+        const newx = rows.map(({ value, ...rest }) => rest);
 
-    //     const jsonString = JSON.stringify(tmp, null, 2);
-    //     const blob = new Blob([jsonString], { type: "application/json" });
-    //     const url = URL.createObjectURL(blob);
-
-    //     const a = document.createElement("a");
-    //     a.href = url;
-    //     a.download = "test.json"; 
-    //     a.click();
-
-    //     URL.revokeObjectURL(url); 
-    // };
+        setInvArmadurasData(newx)
+    }
 
     useEffect(() => {
         updateSelectedSkills()
-    }, [rows.length])
+        updateData()
+    }, [rows])
 
     return (
-        <Card className="flex-col gap-1 w-1/2">
+        <Card className="flex-col gap-1 md:w-1/2">
 
             <TitleTag.Sub className="text-center">Inventário Armaduras/ Escudos</TitleTag.Sub>
 
