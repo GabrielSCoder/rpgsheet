@@ -13,12 +13,16 @@ export function AtributosSecundarios({props} : {props : atributos_secundariosT})
                 <TitleTag.Sub>Pontos de vida</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
+                <Input.Number name="pontos_vida" className="w-10 text-center" disabled  value={props.pts_vida}/>
+                <TitleTag.Sub>Pontos de vida máximo</TitleTag.Sub>
+            </Card>
+            <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.pts_magia}/>
                 <TitleTag.Sub>Pontos de magia</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
-                <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.ataque} />
-                <TitleTag.Sub>Ataque</TitleTag.Sub>
+                <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.pts_magia}/>
+                <TitleTag.Sub>Pontos de magia máximo</TitleTag.Sub>
             </Card>
             <Card className="flex-col items-center">
                 <Input.Number name="pontos_vida" className="w-10 text-center" disabled value={props.defesa}/>

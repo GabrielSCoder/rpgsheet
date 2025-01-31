@@ -4,104 +4,119 @@
         "nome": "Espada Longa",
         "tipo": "corte",
         "dano": "1d8",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 3
     },
     {
         "id": 2,
         "nome": "Adaga",
         "tipo": "perfurante",
         "dano": "1d4",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 5
     },
     {
         "id": 3,
         "nome": "Martelo de Guerra",
         "tipo": "impacto",
         "dano": "1d10",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 68
     },
     {
         "id": 4,
         "nome": "Machado de Batalha",
         "tipo": "corte",
         "dano": "1d12",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 69
     },
     {
         "id": 5,
         "nome": "Arco Longo",
         "tipo": "perfurante",
         "dano": "1d8",
-        "alcance": 150
+        "alcance": 150,
+        "pericia" : 12
     },
     {
         "id": 6,
         "nome": "Besta Leve",
         "tipo": "perfurante",
         "dano": "1d8",
-        "alcance": 80
+        "alcance": 80,
+        "pericia" : 13
     },
     {
         "id": 7,
         "nome": "Lança",
         "tipo": "perfurante",
         "dano": "1d6",
-        "alcance": 20
+        "alcance": 20,
+        "pericia" : 6
     },
     {
         "id": 8,
         "nome": "Cimitarra",
         "tipo": "corte",
         "dano": "1d6",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 4
     },
     {
         "id": 9,
         "nome": "Maça",
         "tipo": "impacto",
         "dano": "1d6",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 8
     },
     {
         "id": 10,
         "nome": "Espada Curta",
         "tipo": "perfurante",
         "dano": "1d6",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 4
     },
     {
         "id": 11,
         "nome": "Arco Curto",
         "tipo": "perfurante",
         "dano": "1d6",
-        "alcance": 80
+        "alcance": 80,
+        "pericia" : 10
     },
     {
         "id": 12,
         "nome": "Clava",
         "tipo": "impacto",
         "dano": "1d4",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 8
     },
     {
         "id": 13,
         "nome": "Funda",
         "tipo": "impacto",
         "dano": "1d4",
-        "alcance": 60
+        "alcance": 60,
+        "pericia" : 8
     },
     {
         "id": 14,
         "nome": "Espada Bastarda",
         "tipo": "corte",
         "dano": "1d10",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 3
     },
     {
         "id": 15,
         "nome": "Alabarda",
         "tipo": "corte",
         "dano": "1d10",
-        "alcance": 0
+        "alcance": 0,
+        "pericia" : 6
     }
 ]

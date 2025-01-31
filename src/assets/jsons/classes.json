@@ -1,12 +1,64 @@
 [
-  { "nome": "Guerreiro", "id": 1, "pv_inicial": 12, "bonus_constituicao": 2 },
-  { "nome": "Paladino", "id": 2, "pv_inicial": 12, "bonus_constituicao": 2 },
-  { "nome": "Clérigo", "id": 3, "pv_inicial": 10, "bonus_constituicao": 2 },
-  { "nome": "Ladino", "id": 4, "pv_inicial": 8, "bonus_constituicao": 2 },
-  { "nome": "Alquimista", "id": 5, "pv_inicial": 8, "bonus_constituicao": 2 },
-  { "nome": "Arqueiro", "id": 6, "pv_inicial": 10, "bonus_constituicao": 2 },
-  { "nome": "Patrulheiro", "id": 7, "pv_inicial": 10, "bonus_constituicao": 2 },
-  { "nome": "Bardo", "id": 8, "pv_inicial": 8, "bonus_constituicao": 2 },
-  { "nome": "Mago", "id": 9, "pv_inicial": 8, "bonus_constituicao": 2 },
-  { "nome": "Explorador", "id": 10, "pv_inicial": 10, "bonus_constituicao": 2 }
+  { "nome": "Guerreiro", "id": 1, "pv_inicial": 12, "bonus_constituicao": 2,
+   "pericias_classe" : {"fixas" : [{"id" : 31, "graduacaoId" : 4}, {"id" : 45, "graduacaoId" : 4}, {"id" : 46, "graduacaoId" : 4}, {"id" : 56, "graduacaoId" : 5}]},
+   "habilidade_classe" : {"escolha" : {"qtd" : 1, "opts" : [{"id" : 144, "graduacaoId" : 5}, {"id" : 143, "graduacaoId" : 5}, {"id" : 149, "graduacaoId" : 5}]}}
+  },
+
+  { "nome": "Paladino", "id": 2, "pv_inicial": 12, "bonus_constituicao": 2, "pericias_classe" : {
+    "fixas" : [{"id" : 31, "graduacaoId" : 5}, {"id" : 27, "graduacaoId" : 5}, {"id" : 47, "graduacaoId" : 5}, {"id" : 55, "graduacaoId" : 5}]
+    },
+    "habilidade_classe" : {"escolha" : { "qtd" : 3, "opts" : [{"id" : 1, "graduacaoId" : 5}, {"id" : 3, "graduacaoId" : 5}, {"id" : 6, "graduacaoId" : 5}, {"id" : 33, "graduacaoId" : 5},
+    {"id" : 56, "graduacaoId" : 5}, {"id" : 82, "graduacaoId" : 5}, {"id" : 118, "graduacaoId" : 5}, {"id" : 144, "graduacaoId" : 5}, {"id" : 149, "graduacaoId" : 5}, {"id" : 155, "graduacaoId" : 5}]}} 
+  },
+
+  { "nome": "Clérigo", "id": 3, "pv_inicial": 10, "bonus_constituicao": 2,
+    "pericias_classe" : {"fixas" : [{"id" : 27, "graduacaoId" : 5},{"id" : 29, "graduacaoId" : 5}, {"id" : 30, "graduacaoId" : 5}, {"id" : 39, "graduacaoId" : 5}]},
+    "habilidade_classe" : {"fixas" : [{"id" : 151, "graduacaoId" : 5}], "escolha" : {"qtd" : 2, "opts" : [{"id" : 1, "graduacaoId" : 5}, {"id" : 3, "graduacaoId" : 5}, {"id" : 6, "graduacaoId" : 5},
+    {"id" : 56, "graduacaoId" : 5}, {"id" : 74, "graduacaoId" : 5}]}}
+  },
+
+  { "nome": "Ladino", "id": 4, "pv_inicial": 8, "bonus_constituicao": 2, "pericias_classe" :  [{"id" : 1, "graduacaoId" : 5}, {"id" : 16, "graduacaoId" : 5}, {"id" : 31, "graduacaoId" : 5}, {"id" : 35, "graduacaoId" : 5},
+  {"id" : 36, "graduacaoId" : 5}, {"id" : 37, "graduacaoId" : 5}, {"id" : 38, "graduacaoId" : 5}, {"id" : 40, "graduacaoId" : 5}],
+   "habilidade_classe" : {"fixas" : [{"id" : 20, "graduacaoId" : 5}], "escolha" : {"qtd" : 1, "opts" : [{"id" : 77, "graduacaoId" : 5}, {"id" : 97, "graduacaoId" : 5}, {"id" : 127, "graduacaoId" : 5},
+   {"id" : 147, "graduacaoId" : 5}]}}
+  },
+
+  { "nome": "Alquimista", "id": 5, "pv_inicial": 8, "bonus_constituicao": 2,
+   "pericias_classe" : {"fixas" : [{"id" : 2, "graduacaoId" : 4}, {"id" : 29, "graduacaoId" : 4}, {"id" : 30, "graduacaoId" : 4}],
+   "escolha" : {"qtd" : 4, "opts" : [{"id" : 24, "graduacaoId" : 4}, {"id" : 25, "graduacaoId" : 4}, {"id" : 26, "graduacaoId" : 4}, {"id" : 27, "graduacaoId" : 4}, {"id" : 28, "graduacaoId" : 4}]}},
+   "habilidade_classe" : {"fixas" : [{"id" : 60, "graduacaoId" : 4}, {"id" : 148, "graduacaoId" : 4}, {"id" : 98, "graduacaoId" : 4}, {"id" : 151, "graduacaoId" : 4}], "escolha" : {}} 
+  },
+
+  { "nome": "Arqueiro", "id": 6, "pv_inicial": 10, "bonus_constituicao": 2,
+   "pericias_classe" : {"fixas" : [{"id" : 16, "graduacaoId" : 4}, {"id" : 31, "graduacaoId" : 4}, {"id" : 38, "graduacaoId" : 4}, {"id" : 45, "graduacaoId" : 4}, {"id" : 55, "graduacaoId" : 4}, {"id" : 56, "graduacaoId" : 4}]},
+   "habilidade_classe" : {"fixas" : [], "escolha" : {"qtd" : 2, "opts" : [{"id" : 15, "graduacaoId" : 4 }, {"id" : 62, "graduacaoId" : 4}, {"id" : 84, "graduacaoId" : 4}, {"id" : 85, "graduacaoId" : 4}]}}
+  },
+
+  { "nome": "Patrulheiro", "id": 7, "pv_inicial": 10, "bonus_constituicao": 2, 
+   "pericias_classe" : {"fixas" : [{"id" : 16, "graduacaoId" : 4}, {"id" : 31, "graduacaoId" : 4}, {"id" : 38, "graduacaoId" : 4}, {"id" : 45, "graduacaoId" : 4}, {"id" : 55, "graduacaoId" : 4}, {"id" : 56, "graduacaoId" : 4}]},
+   "habilidade_classe" : {"fixas" : [{"id" : 60, "graduacaoId" : 4}, {"id" : 148, "graduacaoId" : 4}, {"id" : 98, "graduacaoId" : 4}, {"id" : 151, "graduacaoId" : 4}], "escolha" : {}}
+  },
+
+  { "nome": "Bardo", "id": 8, "pv_inicial": 8, "bonus_constituicao": 2, 
+    "pericias_classe" : {"fixas" : [{"id" : 24, "graduacaoId" : 4}, {"id" : 26, "graduacaoId" : 4}, {"id" : 40, "graduacaoId" : 4}, {"id" : 41, "graduacaoId" : 4}, {"id" : 42, "graduacaoId" : 4}]},
+    "habilidade_classe" : {"fixas" : [{"id" : 9, "graduacaoId" : 4}], "escolha" : {"qtd" : 3, "opts" : [{"id" : 12, "graduacaoId" : 4 }, {"id" : 129, "graduacaoId" : 4}, {"id" : 130, "graduacaoId" : 4 },
+    {"id" : 131, "graduacaoId" : 4 }, {"id" : 132, "graduacaoId" : 4 }, {"id" : 133, "graduacaoId" : 4 }, {"id" : 134, "graduacaoId" : 4 }, {"id" : 135, "graduacaoId" : 4 }, {"id" : 182, "graduacaoId" : 4 }, {"id" : 184, "graduacaoId" : 4 }]}} 
+  },
+
+  { "nome": "Mago", "id": 9, "pv_inicial": 8, "bonus_constituicao": 2, 
+    "pericias_classe" : {"fixas" : [{"id" : 2, "graduacaoId" : 5},{"id" : 28, "graduacaoId" : 5}, {"id" : 29, "graduacaoId" : 5},
+     {"id" : 30, "graduacaoId" : 5}, {"id" : 38, "graduacaoId" : 5}, {"id" : 39, "graduacaoId" : 5}]},
+     "habilidade_classe" : {"fixas" : [{"id" : 148, "graduacaoId" : 4}, {"id" : 151, "graduacaoId" : 4}], "escolha" : {"qtd" : 2, "opts" : [{"id" : 36, "graduacaoId" : 5}, {"id" : 51, "graduacaoId" : 51},
+     {"id" : 80, "graduacaoId" : 5}, {"id" : 93, "graduacaoId" : 5}, {"id" : 96, "graduacaoId" : 5}, {"id" : 100, "graduacaoId" : 5}, {"id" : 101, "graduacaoId" : 5}, {"id" : 102, "graduacaoId" : 5},
+     {"id" : 117, "graduacaoId" : 5}, {"id" : 168, "graduacaoId" : 5}]}}
+  },
+
+  { "nome": "Explorador", "id": 10, "pv_inicial": 10, "bonus_constituicao": 2,
+  "pericias_classe" : {"fixas" : [{"id" : 31, "graduacaoId" : 5}, {"id" : 16, "graduacaoId" : 5}, {"id" : 45, "graduacaoId" : 5}, {"id" : 46, "graduacaoId" : 5}, {"id" : 56, "graduacaoId" : 5}]},
+  "habilidade_classe" : {"escolha" : {"qtd" : 1, "opts" : [{"id" : 143, "graduacaoId" : 5}, {"id" : 144, "graduacaoId" : 5}, {"id" : 149, "graduacaoId" : 5}]}} },
+
+  { "nome": "Bárbaro", "id": 11, "pv_inicial": 12, "bonus_constituicao": 2, "pericias_classe" : {"fixas" : [{"id" : 31, "graduacaoId" : 5}, {"id" : 45, "graduacaoId" : 5}, {"id" : 55, "graduacaoId" : 5 },
+  {"id" : 56, "graduacaoId" : 5}]}, "habilidade_classe" : {"escolha" : {"qtd" : 2, "opts" : [{"id" : 89, "graduacaoId" : 5}, {"id" : 77, "graduacaoId" : 5}, {"id" : 127, "graduacaoId" : 4},
+  {"id" : 144, "graduacaoId" : 5}, {"id" : 149, "graduacaoId" : 5}]}} 
+  }
 ]

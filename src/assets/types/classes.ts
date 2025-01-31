@@ -3,4 +3,6 @@ export type classe = {
     nome : string
     bonus_constituicao : number
     pv_inicial : number
+    habilidade_classe : any
+    pericias_classe : any
 }

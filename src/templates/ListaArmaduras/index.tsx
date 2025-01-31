@@ -89,14 +89,13 @@ export default function ListaArmaduras() {
     // };
 
     useEffect(() => {
-        console.log(rows)
         updateSelectedSkills()
     }, [rows.length])
 
     return (
         <Card className="flex-col gap-1 w-1/2">
 
-            <TitleTag.Sub className="text-center">Armaduras/ Escudos</TitleTag.Sub>
+            <TitleTag.Sub className="text-center">Inventário Armaduras/ Escudos</TitleTag.Sub>
 
             <div className="bg-purple-500 flex justify-center items-start w-full h-[500px] overflow-y-auto">
                 <Table className="table-auto text-center align-middle w-full bg-yellow-500">

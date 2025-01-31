@@ -6,47 +6,137 @@ import Table from "../../components/Table"
 import TitleTag from "../../components/TitleTags"
 
 import { useEffect, useState } from "react"
+import habilidades from "../../assets/jsons/skills.json"
+import ranks from "../../assets/jsons/ranks.json"
 import { skill } from "../../assets/types/skill"
 import classNames from "../../utils/classNames"
+import { racaT } from "../../assets/types/raca"
+import race from "../../assets/jsons/races.json"
+import classe from "../../assets/jsons/classes.json"
 import armas from "../../assets/jsons/armas.json"
 import { armasT } from "../../assets/types/armas"
+import pericias from "../../assets/jsons/pericias.json"
 
-export default function ListaArmas() {
+type Props = {
+    data: any
+    atributos : any
+}
+
+export default function ListaArmas(props: Props) {
 
     const [skills, setSkills] = useState(armas);
     const [rows, setRows] = useState<armasT[]>([]);
     const [selectedSkills, setSelectedSkills] = useState<[]>([])
 
+    const [dSkills, setDSkills] = useState<[]>([])
+
+    const { data, atributos } = props
+
     const isSkillSelected = (id: number) => {
         return selectedSkills.some((skill: skill) => skill.id === id);
     };
 
+    const isProtectedSkill = (rowId: number) => {
+        return dSkills.some((row) => row.id === rowId)
+    }
+
     const updateSelectedSkills = () => {
+
         setSelectedSkills((prevSelected) => {
 
             const validSkills = rows.filter((row) => row && row.id)
-            console.log(validSkills)
             return validSkills;
         });
     };
 
-    const handleChangeSkill = (value: any, index: number) => {
+    const protectedRows = () => {
 
-        const selectedSkill = JSON.parse(value);
-
-        setRows((prev) => {
-            let tmp = prev
-            tmp[index] = { ...rows[index], id: selectedSkill.id, nome: selectedSkill.nome, bonus : selectedSkill.bonus, dano : selectedSkill.dano, tipo : selectedSkill.tipo, alcance : selectedSkill.alcance }
-            return tmp
+        const tmp = rows.filter((row) => {
+            return dSkills.some((i: any) => row.id === i.id)
         })
 
-        updateSelectedSkills();
+        return tmp
+    }
+
+    const removeProtectedSkills = () => {
+
+        let x = protectedRows()
+
+        setRows((prevRows) => {
+            const updatedRows = prevRows.filter((row) => {
+                return !x.some((rowx) => rowx.id === row.id)
+            })
+
+            return updatedRows;
+        });
+    }
+
+
+    const handleChangeSkill = (value: string, index: number) => {
+        const selectedId = parseInt(value, 10);
+        const selectedSkill = getSkill(selectedId);
+
+        if (selectedSkill) {
+            setRows((prev) => {
+                const updatedRows = [...prev]
+                updatedRows[index] = { ...updatedRows[index], id: selectedSkill.id, nome: selectedSkill.nome, dano : selectedSkill.dano, alcance : selectedSkill.alcance,
+                     tipo : selectedSkill.tipo, pericia : selectedSkill.pericia }
+                return updatedRows;
+            })
+
+            updateSelectedSkills();
+        }
+    };
+
+
+    const createDefaultRows = () => {
+
+        const defaultSkills = dSkills.map((key: skill) => {
+            const skill = getSkill(key.id)
+            return {
+                value: Date.now() + Math.random(),
+                id: skill.id,
+                nome: skill.nome,
+                graduacaoId: key.graduacaoId,
+            };
+        });
+
+        // setRows(defaultSkills);
+        return defaultSkills
+    };
+
+    const insertDefaultRows = () => {
+
+        const tmp = createDefaultRows()
+
+        return setRows(tmp)
+    }
+
+
+    const getSkill = (opt: string | number): any => {
+
+        if (typeof opt === "number") {
+            return armas.find((i) => i.id === opt)
+        } else if (typeof opt === "string") {
+            return armas.find((i) => i.nome === opt)
+        }
+        return null;
+    }
+
+    const getPericia = (opt: string | number): any => {
+
+        if (typeof opt === "number") {
+            return pericias.find((i) => i.id === opt)
+        } else if (typeof opt === "string") {
+            return pericias.find((i) => i.nome === opt)
+        }
+        return null;
     }
 
     const addRow = () => {
         setRows((prevRows) => [
             ...prevRows,
-            { value: Date.now(), id: 0, nome: "", dano: "", tipo : "", bonus : 0, alcance : 0 },
+            { value: Date.now(), id: 0, nome: "", pericia : 0},
         ]);
     };
 
@@ -57,10 +147,10 @@ export default function ListaArmas() {
             temp.pop()
             return temp
         });
-
     }
 
     const removeRow = (index: number) => {
+
         setRows((prevRows) => {
             const updatedRows = prevRows.filter((_, i) => i !== index);
             return updatedRows;
@@ -68,77 +158,107 @@ export default function ListaArmas() {
 
     };
 
-    // const getJSON = () => {
 
-    //     const tmp = rows.map((key, index) => (
-    //         { id: key.id, nome: key.nome, graduacao: ranks[key.graduacaoId] }
-    //     ))
+    const updateRowsOnRaceChange = () => {
 
-    //     const jsonString = JSON.stringify(tmp, null, 2);
-    //     const blob = new Blob([jsonString], { type: "application/json" });
-    //     const url = URL.createObjectURL(blob);
+        const nonDefaultRows = rows.filter(
+            (row) => !dSkills.some((defaultSkill: skill) => defaultSkill.id === row.id)
+        );
 
-    //     const a = document.createElement("a");
-    //     a.href = url;
-    //     a.download = "test.json";
-    //     a.click();
 
-    //     URL.revokeObjectURL(url);
-    // };
+        const defaultRows = createDefaultRows();
+
+
+        const updatedRows = [...defaultRows, ...nonDefaultRows,];
+
+
+        setRows(updatedRows);
+    };
+
+    const bonusCalc = (row : any) => {
+
+        const per = getPericia(row.pericia)
+        
+        if ( per && per.id && rows.length > 0 ) {
+
+            const r = data.find((row: any) => row.id === per.id)
+
+            let bonus = 0
+
+            if (r) {
+                bonus = Math.ceil((ranks[r.graduacaoId - 1].valor + atributos[2]) / 2)
+            } else {
+                bonus = Math.ceil(atributos[2] / 2)
+            }
+           
+            return bonus
+        }
+
+        return 0
+    }
+
 
     useEffect(() => {
-        console.log(rows)
-        updateSelectedSkills()
-    }, [rows.length])
+        if (dSkills && dSkills.length > 0) {
+            updateRowsOnRaceChange();
+        }
+    }, [dSkills]);
+
 
     return (
         <Card className="flex-col gap-1 w-1/2">
 
-            <TitleTag.Sub className="text-center">Perícias com armas</TitleTag.Sub>
+            <TitleTag.Sub className="text-center">Inventário Armas</TitleTag.Sub>
 
             <div className="bg-purple-500 flex justify-center items-start w-full h-[500px] overflow-y-auto">
                 <Table className="table-auto text-center align-middle w-full bg-yellow-500">
                     <Table.Header className="sticky top-0 bg-red-300">
                         <Table.Row>
                             <Table.Head className="py-3">Nome</Table.Head>
-                            <Table.Head className="py-3">Bônus</Table.Head>
-                            <Table.Head className="py-3">Dano</Table.Head>
-                            <Table.Head className="py-3">Alcance</Table.Head>
-                            <Table.Head className="py-3">Tipo</Table.Head>
+                            <Table.Head>Tipo arma</Table.Head>
+                            <Table.Head>Bônus</Table.Head>
+                            <Table.Head>Dano</Table.Head>
+                            <Table.Head>Alcance</Table.Head>
+                            <Table.Head>Tipo</Table.Head>
                             <Table.Head> </Table.Head>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body className="overflow-y-auto">
                         {rows.map((row, index) => (
                             <Table.Row key={row.value}>
+                                <Table.Column><input type="text" className="p-2 border rounded-md" /></Table.Column>
                                 <Table.Column>
                                     <select
                                         className="rounded-md p-2 w-full border-slate-300"
                                         onChange={(e) => handleChangeSkill(e.target.value, index)}
+                                        value={row.id || ""}
                                     >
-                                        <option>Selecione</option>
+                                        <option value="">Selecione</option>
                                         {skills &&
                                             skills.map((item) => (
                                                 <option
                                                     key={item.id}
                                                     className="text-black"
-                                                    value={JSON.stringify(item)}
+                                                    value={item.id}
                                                     disabled={isSkillSelected(item.id) && rows[index]?.id !== item.id}
                                                 >
                                                     {item.id} - {item.nome}
                                                 </option>
                                             ))}
                                     </select>
+
                                 </Table.Column>
-                                <Table.Column>{row.bonus}</Table.Column>
+                                <Table.Column>{bonusCalc(row)}</Table.Column>
                                 <Table.Column>{row.dano}</Table.Column>
                                 <Table.Column>{row.alcance}</Table.Column>
                                 <Table.Column>{row.tipo}</Table.Column>
+
                                 <Table.Column>
                                     <Button
                                         type="delete"
                                         text="X"
                                         onClick={() => removeRow(index)}
+                                        disabled={isProtectedSkill(row.id)}
                                     />
                                 </Table.Column>
                             </Table.Row>
@@ -149,7 +269,10 @@ export default function ListaArmas() {
 
             <Card className="w-full">
                 <Button onClick={() => { addRow() }} text="Adicionar" className="w-full mt-5 rounded-none" type="submitt" />
-                <Button onClick={() => { removeSkill() }} text="Remover" className="w-full mt-5 bg-red-800 rounded-none" type="delete" disabled={rows.length <= 0} />
+                {/* <Button onClick={() => { createDefaultRows() }} text="criar" className="w-full mt-5 rounded-none" type="submitt" /> */}
+                <Button onClick={() => { insertDefaultRows() }} text="add dfl" className="w-full mt-5 rounded-none" type="submitt" />
+                <Button onClick={() => { removeProtectedSkills() }} text="Del" className="w-full mt-5 rounded-none" type="delete" />
+
             </Card>
 
         </Card>

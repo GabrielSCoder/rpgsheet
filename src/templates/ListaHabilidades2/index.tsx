@@ -12,11 +12,12 @@ import { skill } from "../../assets/types/skill"
 import classNames from "../../utils/classNames"
 import { racaT } from "../../assets/types/raca"
 import race from "../../assets/jsons/races.json"
-import { tmpdir } from "os"
+import classe from "../../assets/jsons/classes.json"
 
 type Props = {
     getValues: any
     watch: any
+    setData : any
 }
 
 export default function ListaHabilidade2(props: Props) {
@@ -28,7 +29,7 @@ export default function ListaHabilidade2(props: Props) {
     const [dSkills, setDSkills] = useState<[]>([])
     const [dRows, setDRows] = useState<skill[]>([])
 
-    const { getValues, watch } = props
+    const { getValues, watch, setData } = props
 
     const isSkillSelected = (id: number) => {
         return selectedSkills.some((skill: skill) => skill.id === id);
@@ -119,6 +120,7 @@ export default function ListaHabilidade2(props: Props) {
 
 
     const getSkill = (opt: string | number): any => {
+
         if (typeof opt === "number") {
             return habilidades.find((i) => i.id === opt)
         } else if (typeof opt === "string") {
@@ -144,6 +146,7 @@ export default function ListaHabilidade2(props: Props) {
     }
 
     const removeRow = (index: number) => {
+
         setRows((prevRows) => {
             const updatedRows = prevRows.filter((_, i) => i !== index);
             return updatedRows;
@@ -152,9 +155,11 @@ export default function ListaHabilidade2(props: Props) {
     };
 
     const getDskills = () => {
-        console.log("disparando getDskills...");
+
         const racialSkills = race[getValues("racaId") - 1]?.habilidade_racial || []
-        setDSkills(racialSkills)
+        const classSKills = classe[getValues("classeId") - 1]?.habilidade_classe.fixas || []
+        const tt = racialSkills.concat(classSKills)
+        setDSkills(tt)
     };
 
     const updateRowsOnRaceChange = () => {
@@ -173,26 +178,16 @@ export default function ListaHabilidade2(props: Props) {
         setRows(updatedRows);
     };
 
+    const updateSkillData = () => {
+        const rr = rows.map((value) => {
+            return {id : value.id, nome : value.nome, graduacaoId : value.graduacaoId}
+        })
 
-    // useEffect(() => {
-    //     updateSelectedSkills()
-    //     console.log("Linhas atuais :", rows)
-    // }, [rows])
-
-    // useEffect(() => {
-    //     console.log("Skills atuais ", dSkills)
-    // }, [dSkills])
-
-    // useEffect(() => {
-    //     getValues("racaId") && race[getValues("racaId") - 1].habilidade_racial ? getDskills() : ""
-    //     // dSkills && dSkills.length > 0 ? insertDefaultRows() : ""
-    //     console.log("Raça atual: ", race[getValues("racaId") - 1])
-    // }, [watch("racaId")])
+        setData(rr)
+    }
 
     useEffect(() => {
-        // Atualiza as linhas assim que `dSkills` for alterado
         if (dSkills && dSkills.length > 0) {
-            console.log("dSkills atualizado, atualizando linhas...");
             updateRowsOnRaceChange();
         }
     }, [dSkills]);
@@ -202,13 +197,20 @@ export default function ListaHabilidade2(props: Props) {
         const raceId = getValues("racaId");
         if (raceId && race[raceId - 1]?.habilidade_racial) {
             getDskills()
-            console.log("Raça atual: ", race[raceId - 1]);
         }
     }, [watch("racaId")])
+
+    useEffect(() => {
+        removeProtectedSkills()
+        const classeId = getValues("classeId");
+        if (classeId && classe[classeId - 1]?.habilidade_classe) {
+            getDskills()
+        }
+    }, [watch("classeId")])
     
     useEffect(() => {
         updateSelectedSkills();
-        console.log("Linhas atuais:", rows)
+        updateSkillData()
     }, [rows]);
 
     return (
@@ -277,7 +279,7 @@ export default function ListaHabilidade2(props: Props) {
                 {/* <Button onClick={() => { createDefaultRows() }} text="criar" className="w-full mt-5 rounded-none" type="submitt" /> */}
                 <Button onClick={() => { insertDefaultRows() }} text="add dfl" className="w-full mt-5 rounded-none" type="submitt" />
                 <Button onClick={() => { removeProtectedSkills() }} text="Del" className="w-full mt-5 rounded-none" type="delete" />
-                <Button onClick={() => { removeSkill() }} text="Remover" className="w-full mt-5 bg-red-800 rounded-none" type="delete" disabled={rows.length <= 0} />
+                <Button onClick={() => { updateSkillData() }} text="Remover" className="w-full mt-5 bg-red-800 rounded-none" type="delete" disabled={rows.length <= 0} />
             </Card>
 
         </Card>

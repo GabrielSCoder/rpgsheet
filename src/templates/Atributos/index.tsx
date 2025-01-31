@@ -5,24 +5,12 @@ import TitleTag from "../../components/TitleTags";
 import race from "../../assets/jsons/races.json"
 
 
-export default function AtributosTemplate({control, register, watch, getValues, setValues}) {
+export default function AtributosTemplate({control, register, watch, getValues, setValues, atributos, setAtributos, calcFinal, setCalcFinal}) {
 
     const [attrPts, setAttrPts] = useState(10);
 
 
-    const [atributos, setAtributos] = useState({
-        FOR: 0,
-        CON: 0,
-        DEX: 0,
-        AGI: 0,
-        INT: 0,
-        SAB: 0,
-        CAR: 0,
-        PER: 0,
-    });
-
     const [raceMod, setRaceMod] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-    const [calcFinal, setCalcFinal] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
 
     const getColumns = () => {
@@ -86,7 +74,7 @@ export default function AtributosTemplate({control, register, watch, getValues, 
 
 
     useEffect(() => {
-        // console.log(race[getValues("racaId") - 1])
+
         if (getValues("racaId") != null) {
             setRaceMod(race[getValues("racaId") - 1].modificadores)
             if (race[getValues("racaId") - 1].bonus_atributo) {

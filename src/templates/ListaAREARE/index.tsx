@@ -12,24 +12,23 @@ import classe from "../../assets/jsons/classes.json"
 import { periciaT } from "../../assets/types/pericia"
 
 type Props = {
-    getValues: any
-    watch: any
     setData : any
 }
 
-export default function ListaPericias(props: Props) {
+export default function ListaAREARE(props : Props) {
 
     const [skills, setSkills] = useState<periciaT[]>([]);
     const [rows, setRows] = useState<periciaT[]>([]);
     const [selectedSkills, setSelectedSkills] = useState<[]>([])
 
     const [dSkills, setDSkills] = useState<[]>([])
+    const [dRows, setDRows] = useState<skill[]>([])
 
-    const { getValues, watch, setData } = props
+    const { setData } = props
 
     const periciaFilter = () => {
         const tmp = pericia.filter((row) => {
-            return row.tipo === "comum"
+            return row.tipo !== "comum"
         })
 
         return tmp
@@ -157,7 +156,7 @@ export default function ListaPericias(props: Props) {
     };
 
     const getDskills = () => {
-      
+        console.log("disparando getDskills...");
         const racialSkills = classe[getValues("classeId") - 1]?.pericias_classe?.fixas || []
         setDSkills(racialSkills)
     };
@@ -178,6 +177,7 @@ export default function ListaPericias(props: Props) {
         setRows(updatedRows);
     };
 
+    
     const updateSkillData = () => {
         const rr = rows.map((value) => {
             return {id : value.id, nome : value.nome, graduacaoId : value.graduacaoId}
@@ -185,8 +185,6 @@ export default function ListaPericias(props: Props) {
 
         setData(rr)
     }
-
-
 
     useEffect(() => {
 
@@ -201,23 +199,16 @@ export default function ListaPericias(props: Props) {
         }
     }, [dSkills]);
     
+
     useEffect(() => {
-        removeProtectedSkills()
-        const raceId = getValues("classeId");
-        if (raceId && classe[raceId - 1]?.pericias_classe) {
-            getDskills()
-        }
-    }, [watch("classeId")])
-    
-    useEffect(() => {
-        updateSelectedSkills()
-        updateSkillData()
-    }, [rows, dSkills])
+        updateSelectedSkills();
+        updateSkillData();
+    }, [rows, dSkills]);
 
     return (
         <Card className="flex-col gap-1 w-1/2">
 
-            <TitleTag.Sub className="text-center">Perícias</TitleTag.Sub>
+            <TitleTag.Sub className="text-center">Perícias em armas/Armaduras/Escudos</TitleTag.Sub>
 
             <div className="bg-purple-500 flex justify-center items-start w-full h-[500px] overflow-y-auto">
                 <Table className="table-auto text-center align-middle w-full bg-yellow-500">

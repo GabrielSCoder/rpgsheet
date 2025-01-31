@@ -6,5 +6,6 @@ export type armasT = {
     dano : string,
     tipo : string,
     value: number,
-    alcance : number
+    alcance : number,
+    pericia : number
 }

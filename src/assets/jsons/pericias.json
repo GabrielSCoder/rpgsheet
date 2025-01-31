@@ -65,5 +65,7 @@
   { "nome": "investigação", "id": 64, "tipo": "comum" },
   { "nome": "arqueologia", "id": 65, "tipo": "comum" },
   { "nome": "ladinagem", "id": 66, "tipo": "comum" },
-  { "nome": "exploração", "id": 67, "tipo": "comum" }
+  { "nome": "exploração", "id": 67, "tipo": "comum" },
+  { "nome": "martelo gigante", "id": 68, "tipo": "armas" },
+  { "nome": "machado de batalha", "id": 69, "tipo": "armas" }
 ]
