@@ -5,7 +5,7 @@ import TitleTag from "../../components/TitleTags";
 import race from "../../assets/jsons/races.json"
 
 
-export default function AtributosTemplate({ control, register, watch, getValues, setValues, atributos, setAtributos, calcFinal, setCalcFinal, raceMod, setRaceMod }) {
+export default function AtributosTemplate({ watch, getValues, atributos, setAtributos, calcFinal, setCalcFinal, raceMod, setRaceMod } : any) {
 
     const [attrPts, setAttrPts] = useState(10);
 
@@ -70,18 +70,38 @@ export default function AtributosTemplate({ control, register, watch, getValues,
 
 
 
+    // useEffect(() => {
+
+    //     if (getValues("racaId") != null) {
+    //         setRaceMod(race[getValues("racaId") - 1].modificadores)
+    //         if (race[getValues("racaId") - 1].bonus_atributo) {
+    //             setAttrPts(attrPts + race[getValues("racaId") - 1].bonus_atributo)
+    //         } else {
+    //             attrPts >= 3 && attrPts < 10 ? setAttrPts(attrPts - 3) : resetarPontos()
+    //         }
+
+    //     } else setRaceMod([0, 0, 0, 0, 0, 0, 0, 0, 0])
+    // }, [watch("racaId")])
+
     useEffect(() => {
-
-        if (getValues("racaId") != null) {
-            setRaceMod(race[getValues("racaId") - 1].modificadores)
-            if (race[getValues("racaId") - 1].bonus_atributo) {
-                setAttrPts(attrPts + race[getValues("racaId") - 1].bonus_atributo)
+        const selectedRace = race[getValues("racaId") - 1];
+    
+        if (getValues("racaId") != null && selectedRace) {
+            setRaceMod(selectedRace.modificadores);
+    
+            if (selectedRace.bonus_atributo) {
+                setAttrPts(attrPts + selectedRace.bonus_atributo);
             } else {
-                attrPts >= 3 && attrPts < 10 ? setAttrPts(attrPts - 3) : resetarPontos()
+                if (attrPts >= 3 && attrPts < 10) {
+                    setAttrPts(attrPts - 3);
+                } else {
+                    resetarPontos();
+                }
             }
-
-        } else setRaceMod([0, 0, 0, 0, 0, 0, 0, 0, 0])
-    }, [watch("racaId")])
+        } else {
+            setRaceMod([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+        }
+    }, [watch("racaId")]);
 
     useEffect(() => {
         getFinalCalc()

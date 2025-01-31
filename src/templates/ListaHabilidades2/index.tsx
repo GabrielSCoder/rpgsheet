@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import Button from "../../components/Button"
 import Card from "../../components/Card"
@@ -24,9 +25,9 @@ export default function ListaHabilidade2(props: Props) {
 
     const [skills, setSkills] = useState(habilidades);
     const [rows, setRows] = useState<skill[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<[]>([])
+    const [selectedSkills, setSelectedSkills] = useState<skill[]>([])
 
-    const [dSkills, setDSkills] = useState<[]>([])
+    const [dSkills, setDSkills] = useState<skill[]>([])
     const [dRows, setDRows] = useState<skill[]>([])
 
     const { getValues, watch, setData } = props

@@ -16,13 +16,15 @@ import ListaPericias from "../ListaPericias";
 import ListaAREARE from "../ListaAREARE";
 import ranks from "../../assets/jsons/ranks.json"
 import Informacoes from "../Informacoes";
+import { skill } from "../../assets/types/skill";
 
 export default function StyleSheet() {
 
     const { register, getValues, watch, setValue, control } = useForm({
         defaultValues: {
             "racaId": null,
-            "classeId": null
+            "classeId": null,
+            "nome" : ""
         }
     })
 
@@ -46,16 +48,16 @@ export default function StyleSheet() {
 
     const [classData, setClassData] = useState<classe>()
     const [periciaData, setPericiaData] = useState<[]>([])
-    const [skillData, setSkillData] = useState<[]>([])
+    const [skillData, setSkillData] = useState<skill[]>([])
     const [periciaArmaData, setPericiaArmaData] = useState([])
     const [InvArmasData, setInvArmasData] = useState([])
     const [invArmadurasData, setInvArmadurasData] = useState([])
     const [wholeData, setWholeData] = useState([])
 
 
-    const regras = {
-        dados: [{ "id": 0, "valor": 10, "label": "normal" }, { "id": 1, "valor": 12, "label": "fantasia" }, { "id": 2, "label": "livre", "valor": -1 }]
-    }
+    // const regras = {
+    //     dados: [{ "id": 0, "valor": 10, "label": "normal" }, { "id": 1, "valor": 12, "label": "fantasia" }, { "id": 2, "label": "livre", "valor": -1 }]
+    // }
 
 
     const downloadJSON = () => {
@@ -123,7 +125,7 @@ export default function StyleSheet() {
         setValue(nome, value)
     }
 
-    const getClasse = (opt: string | number): any => {
+    const getClasse = (opt: string | number | null): any => {
 
         if (typeof opt === "number") {
             return classes.find((i) => i.id == opt)
@@ -156,7 +158,7 @@ export default function StyleSheet() {
     }, [wholeData])
 
     useEffect(() => {
-        const xxx = getValues("classeId")
+        const xxx = getValues("classeId") ?? "0"
         const c = getClasse(parseInt(xxx, 10))
         setClassData(c)
         calcVidaMaxima()

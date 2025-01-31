@@ -4,10 +4,8 @@ import Card from "../../components/Card"
 
 import Table from "../../components/Table"
 import TitleTag from "../../components/TitleTags"
-
 import { useEffect, useState } from "react"
 import ranks from "../../assets/jsons/ranks.json"
-import { skill } from "../../assets/types/skill"
 import armas from "../../assets/jsons/armas.json"
 import { armasT } from "../../assets/types/armas"
 import pericias from "../../assets/jsons/pericias.json"
@@ -20,22 +18,11 @@ type Props = {
 
 export default function ListaArmas(props: Props) {
 
-    const [skills, setSkills] = useState(armas);
+    const skills = armas
     const [rows, setRows] = useState<armasT[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<[]>([])
-
-    const [dSkills, setDSkills] = useState<[]>([])
 
     const { data, atributos, setInvArmasData } = props
 
-    const updateSelectedSkills = () => {
-
-        setSelectedSkills((prevSelected) => {
-
-            const validSkills = rows.filter((row) => row && row.id)
-            return validSkills;
-        });
-    };
 
     const removeSkill = () => {
 
@@ -60,7 +47,6 @@ export default function ListaArmas(props: Props) {
                 return updatedRows;
             })
 
-            updateSelectedSkills();
         }
     };
 
@@ -87,7 +73,17 @@ export default function ListaArmas(props: Props) {
     const addRow = () => {
         setRows((prevRows) => [
             ...prevRows,
-            { value: Date.now(), id: 0, nome: "", pericia: 0, titulo: "" },
+            {
+                value: Date.now(),
+                id: 0,
+                nome: "",
+                pericia: 0,
+                titulo: "",
+                bonus: 0,      
+                dano: "",      
+                tipo: "",       
+                alcance: 0     
+            },
         ]);
     };
 

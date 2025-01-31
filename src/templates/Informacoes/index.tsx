@@ -1,4 +1,3 @@
-import { register } from "module";
 import Card from "../../components/Card";
 import CustomSelect from "../../components/CustomSelect";
 import { Input } from "../../components/Inputs";

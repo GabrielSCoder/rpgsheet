@@ -13,9 +13,9 @@ type Props = {
 
 export default function ListaArmaduras(props : Props) {
 
-    const [skills, setSkills] = useState(armaduras);
+    const skills = armaduras 
     const [rows, setRows] = useState<armadurasd[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<[]>([])
+    const [selectedSkills, setSelectedSkills] = useState<armadurasd[]>([])
 
     const { setInvArmadurasData } = props
 
@@ -24,7 +24,7 @@ export default function ListaArmaduras(props : Props) {
     };
 
     const updateSelectedSkills = () => {
-        setSelectedSkills((prevSelected) => {
+        setSelectedSkills(() => {
 
             const validSkills = rows.filter((row) => row && row.id)
             return validSkills;

@@ -1,9 +1,10 @@
+// @ts-nocheck
+
 import Button from "../../components/Button"
 import Card from "../../components/Card"
 import Table from "../../components/Table"
 import TitleTag from "../../components/TitleTags"
 import { useEffect, useState } from "react"
-import habilidades from "../../assets/jsons/skills.json"
 import ranks from "../../assets/jsons/ranks.json"
 import { skill } from "../../assets/types/skill"
 import classNames from "../../utils/classNames"
@@ -21,8 +22,8 @@ export default function ListaPericias(props: Props) {
 
     const [skills, setSkills] = useState<periciaT[]>([]);
     const [rows, setRows] = useState<periciaT[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<[]>([])
-    const [dSkills, setDSkills] = useState<[]>([])
+    const [selectedSkills, setSelectedSkills] = useState<periciaT[]>([])
+    const [dSkills, setDSkills] = useState<skill[]>([])
   
 
     const { getValues, watch, setData } = props
@@ -157,9 +158,10 @@ export default function ListaPericias(props: Props) {
     };
 
     const getDskills = () => {
-      
-        const racialSkills = classe[getValues("classeId") - 1]?.pericias_classe?.fixas || []
-        setDSkills(racialSkills)
+        const classeData = classe[getValues("classeId") - 1];
+    
+        const racialSkills = classeData?.pericias_classe?.fixas ?? [];
+        setDSkills(racialSkills);
     };
 
     const updateRowsOnRaceChange = () => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Button from "../../components/Button"
 import Card from "../../components/Card"
 import Table from "../../components/Table"
@@ -20,9 +21,9 @@ export default function ListaAREARE(props : Props) {
 
     const [skills, setSkills] = useState<periciaT[]>([]);
     const [rows, setRows] = useState<periciaT[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<[]>([])
+    const [selectedSkills, setSelectedSkills] = useState<periciaT[]>([])
 
-    const [dSkills, setDSkills] = useState<[]>([])
+    const [dSkills, setDSkills] = useState<periciaT[]>([])
 
     const { periciaArmaData, setPericiaArmaData } = props
 
